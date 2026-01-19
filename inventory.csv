@@ -1,10 +1,596 @@
-﻿year,region,substance,sector,value
-1980,China,CFC-11,Total,1.73
-1980,China,CFC-11,Foam,1.67
-1980,China,CFC-11,Refrigeration,0.06
-1981,China,CFC-11,Total,2
-1981,China,CFC-11,Foam,1.5
-1981,China,CFC-11,Refrigeration,0.5
-1982,China,CFC-11,Total,3
-1982,China,CFC-11,Foam,2.7
-1982,China,CFC-11,Refrigeration,0.3
+year,region,substance,sector,value
+1980,China,CFC-11,Total,1.733159803
+1981,China,CFC-11,Total,2.053912738
+1982,China,CFC-11,Total,2.464000145
+1983,China,CFC-11,Total,2.951144225
+1984,China,CFC-11,Total,3.592565494
+1985,China,CFC-11,Total,4.288650058
+1986,China,CFC-11,Total,4.984734576
+1987,China,CFC-11,Total,5.836870656
+1988,China,CFC-11,Total,7.047844763
+1989,China,CFC-11,Total,8.10988355
+1990,China,CFC-11,Total,9.086073149
+1991,China,CFC-11,Total,10.37307706
+1992,China,CFC-11,Total,11.93609288
+1993,China,CFC-11,Total,13.80153376
+1994,China,CFC-11,Total,15.78983834
+1995,China,CFC-11,Total,17.71780963
+1996,China,CFC-11,Total,18.10753188
+1997,China,CFC-11,Total,21.36500404
+1998,China,CFC-11,Total,23.57836014
+1999,China,CFC-11,Total,24.14237092
+2000,China,CFC-11,Total,23.23731854
+2001,China,CFC-11,Total,22.49024559
+2002,China,CFC-11,Total,22.081101
+2003,China,CFC-11,Total,20.80672817
+2004,China,CFC-11,Total,20.24499345
+2005,China,CFC-11,Total,19.22094801
+2006,China,CFC-11,Total,17.88775053
+2007,China,CFC-11,Total,14.0514046
+2008,China,CFC-11,Total,12.95529847
+2009,China,CFC-11,Total,12.29304087
+2010,China,CFC-11,Total,11.62203796
+2011,China,CFC-11,Total,10.88317931
+2012,China,CFC-11,Total,10.12738201
+2013,China,CFC-11,Total,9.265745248
+2014,China,CFC-11,Total,8.255096846
+1980,China,CFC-11,Industrial and commercial refrigeration sector,0.058245514
+1981,China,CFC-11,Industrial and commercial refrigeration sector,0.073149961
+1982,China,CFC-11,Industrial and commercial refrigeration sector,0.091206267
+1983,China,CFC-11,Industrial and commercial refrigeration sector,0.112052314
+1984,China,CFC-11,Industrial and commercial refrigeration sector,0.138444631
+1985,China,CFC-11,Industrial and commercial refrigeration sector,0.167389397
+1986,China,CFC-11,Industrial and commercial refrigeration sector,0.195832911
+1987,China,CFC-11,Industrial and commercial refrigeration sector,0.2297403
+1988,China,CFC-11,Industrial and commercial refrigeration sector,0.267133601
+1989,China,CFC-11,Industrial and commercial refrigeration sector,0.299453617
+1990,China,CFC-11,Industrial and commercial refrigeration sector,0.320825143
+1991,China,CFC-11,Industrial and commercial refrigeration sector,0.350508063
+1992,China,CFC-11,Industrial and commercial refrigeration sector,0.390701809
+1993,China,CFC-11,Industrial and commercial refrigeration sector,0.436523978
+1994,China,CFC-11,Industrial and commercial refrigeration sector,0.48683798
+1995,China,CFC-11,Industrial and commercial refrigeration sector,0.538836901
+1996,China,CFC-11,Industrial and commercial refrigeration sector,0.572639618
+1997,China,CFC-11,Industrial and commercial refrigeration sector,0.592668177
+1998,China,CFC-11,Industrial and commercial refrigeration sector,0.596982265
+1999,China,CFC-11,Industrial and commercial refrigeration sector,0.600360468
+2000,China,CFC-11,Industrial and commercial refrigeration sector,0.614964029
+2001,China,CFC-11,Industrial and commercial refrigeration sector,0.59131967
+2002,China,CFC-11,Industrial and commercial refrigeration sector,0.55587749
+2003,China,CFC-11,Industrial and commercial refrigeration sector,0.508111168
+2004,China,CFC-11,Industrial and commercial refrigeration sector,0.447664
+2005,China,CFC-11,Industrial and commercial refrigeration sector,0.374816
+2006,China,CFC-11,Industrial and commercial refrigeration sector,0.293976
+2007,China,CFC-11,Industrial and commercial refrigeration sector,0.243144
+2008,China,CFC-11,Industrial and commercial refrigeration sector,0.196344
+2009,China,CFC-11,Industrial and commercial refrigeration sector,0.152712
+2010,China,CFC-11,Industrial and commercial refrigeration sector,0.10908
+2011,China,CFC-11,Industrial and commercial refrigeration sector,0.07272
+2012,China,CFC-11,Industrial and commercial refrigeration sector,0.043632
+2013,China,CFC-11,Industrial and commercial refrigeration sector,0.021816
+2014,China,CFC-11,Industrial and commercial refrigeration sector,0.007272
+1980,China,CFC-11,Foam blowing sector,1.669542994
+1981,China,CFC-11,Foam blowing sector,1.969744399
+1982,China,CFC-11,Foam blowing sector,2.360989678
+1983,China,CFC-11,Foam blowing sector,2.826114702
+1984,China,CFC-11,Foam blowing sector,3.439441846
+1985,China,CFC-11,Foam blowing sector,4.104481085
+1986,China,CFC-11,Foam blowing sector,4.770262033
+1987,China,CFC-11,Foam blowing sector,5.557113098
+1988,China,CFC-11,Foam blowing sector,6.410917823
+1989,China,CFC-11,Foam blowing sector,7.131800454
+1990,China,CFC-11,Foam blowing sector,7.996254935
+1991,China,CFC-11,Foam blowing sector,9.098193394
+1992,China,CFC-11,Foam blowing sector,10.46828886
+1993,China,CFC-11,Foam blowing sector,12.12711282
+1994,China,CFC-11,Foam blowing sector,13.92724835
+1995,China,CFC-11,Foam blowing sector,16.05138442
+1996,China,CFC-11,Foam blowing sector,16.61909626
+1997,China,CFC-11,Foam blowing sector,19.71227586
+1998,China,CFC-11,Foam blowing sector,21.90074188
+1999,China,CFC-11,Foam blowing sector,22.15570196
+2000,China,CFC-11,Foam blowing sector,20.73273751
+2001,China,CFC-11,Foam blowing sector,20.32983142
+2002,China,CFC-11,Foam blowing sector,20.47638601
+2003,China,CFC-11,Foam blowing sector,19.3463415
+2004,China,CFC-11,Foam blowing sector,18.96732945
+2005,China,CFC-11,Foam blowing sector,18.15963201
+2006,China,CFC-11,Foam blowing sector,17.03277453
+2007,China,CFC-11,Foam blowing sector,13.3777606
+2008,China,CFC-11,Foam blowing sector,12.51095447
+2009,China,CFC-11,Foam blowing sector,11.99632887
+2010,China,CFC-11,Foam blowing sector,11.44095796
+2011,China,CFC-11,Foam blowing sector,10.81045931
+2012,China,CFC-11,Foam blowing sector,10.08375001
+2013,China,CFC-11,Foam blowing sector,9.243929248
+2014,China,CFC-11,Foam blowing sector,8.247824846
+1980,China,CFC-11,Tobacco sector,0
+1981,China,CFC-11,Tobacco sector,0
+1982,China,CFC-11,Tobacco sector,0
+1983,China,CFC-11,Tobacco sector,0
+1984,China,CFC-11,Tobacco sector,0
+1985,China,CFC-11,Tobacco sector,0
+1986,China,CFC-11,Tobacco sector,0
+1987,China,CFC-11,Tobacco sector,0.03
+1988,China,CFC-11,Tobacco sector,0.348582964
+1989,China,CFC-11,Tobacco sector,0.656154874
+1990,China,CFC-11,Tobacco sector,0.743525836
+1991,China,CFC-11,Tobacco sector,0.893762466
+1992,China,CFC-11,Tobacco sector,1.04143113
+1993,China,CFC-11,Tobacco sector,1.19690074
+1994,China,CFC-11,Tobacco sector,1.330190353
+1995,China,CFC-11,Tobacco sector,1.088412204
+1996,China,CFC-11,Tobacco sector,0.8845
+1997,China,CFC-11,Tobacco sector,1.028
+1998,China,CFC-11,Tobacco sector,1.0465
+1999,China,CFC-11,Tobacco sector,1.3515
+2000,China,CFC-11,Tobacco sector,1.85
+2001,China,CFC-11,Tobacco sector,1.5
+2002,China,CFC-11,Tobacco sector,0.94
+2003,China,CFC-11,Tobacco sector,0.75
+2004,China,CFC-11,Tobacco sector,0.5415
+2005,China,CFC-11,Tobacco sector,0.3815
+2006,China,CFC-11,Tobacco sector,0.225
+2007,China,CFC-11,Tobacco sector,0.075
+2008,China,CFC-11,Tobacco sector,0
+2009,China,CFC-11,Tobacco sector,0
+2010,China,CFC-11,Tobacco sector,0
+2011,China,CFC-11,Tobacco sector,0
+2012,China,CFC-11,Tobacco sector,0
+2013,China,CFC-11,Tobacco sector,0
+2014,China,CFC-11,Tobacco sector,0
+1980,China,CFC-11,Aerosol sector,0.005371296
+1981,China,CFC-11,Aerosol sector,0.011018378
+1982,China,CFC-11,Aerosol sector,0.0118042
+1983,China,CFC-11,Aerosol sector,0.012977209
+1984,China,CFC-11,Aerosol sector,0.014679016
+1985,China,CFC-11,Aerosol sector,0.016779576
+1986,China,CFC-11,Aerosol sector,0.018639633
+1987,China,CFC-11,Aerosol sector,0.020017258
+1988,China,CFC-11,Aerosol sector,0.021210374
+1989,China,CFC-11,Aerosol sector,0.022474606
+1990,China,CFC-11,Aerosol sector,0.025467235
+1991,China,CFC-11,Aerosol sector,0.030613137
+1992,China,CFC-11,Aerosol sector,0.035671082
+1993,China,CFC-11,Aerosol sector,0.040996224
+1994,China,CFC-11,Aerosol sector,0.045561658
+1995,China,CFC-11,Aerosol sector,0.039176106
+1996,China,CFC-11,Aerosol sector,0.031296
+1997,China,CFC-11,Aerosol sector,0.03206
+1998,China,CFC-11,Aerosol sector,0.034136
+1999,China,CFC-11,Aerosol sector,0.0348085
+2000,China,CFC-11,Aerosol sector,0.039617
+2001,China,CFC-11,Aerosol sector,0.0690945
+2002,China,CFC-11,Aerosol sector,0.1088375
+2003,China,CFC-11,Aerosol sector,0.2022755
+2004,China,CFC-11,Aerosol sector,0.2885
+2005,China,CFC-11,Aerosol sector,0.305
+2006,China,CFC-11,Aerosol sector,0.336
+2007,China,CFC-11,Aerosol sector,0.3555
+2008,China,CFC-11,Aerosol sector,0.248
+2009,China,CFC-11,Aerosol sector,0.144
+2010,China,CFC-11,Aerosol sector,0.072
+2011,China,CFC-11,Aerosol sector,0
+2012,China,CFC-11,Aerosol sector,0
+2013,China,CFC-11,Aerosol sector,0
+2014,China,CFC-11,Aerosol sector,0
+1980,China,HCFC-22,Total,0.001556182
+1981,China,HCFC-22,Total,0.005545367
+1982,China,HCFC-22,Total,0.011877041
+1983,China,HCFC-22,Total,0.02050955
+1984,China,HCFC-22,Total,0.031405217
+1985,China,HCFC-22,Total,0.044587606
+1986,China,HCFC-22,Total,0.064734144
+1987,China,HCFC-22,Total,0.092576364
+1988,China,HCFC-22,Total,0.129154171
+1989,China,HCFC-22,Total,0.17524311
+1990,China,HCFC-22,Total,0.208514951
+1991,China,HCFC-22,Total,0.291895046
+1992,China,HCFC-22,Total,0.484601568
+1993,China,HCFC-22,Total,0.89225244
+1994,China,HCFC-22,Total,1.336566254
+1995,China,HCFC-22,Total,2.068862285
+1996,China,HCFC-22,Total,2.721885634
+1997,China,HCFC-22,Total,3.551772526
+1998,China,HCFC-22,Total,4.336038759
+1999,China,HCFC-22,Total,7.987021454
+2000,China,HCFC-22,Total,12.08551494
+2001,China,HCFC-22,Total,17.10485386
+2002,China,HCFC-22,Total,23.12356911
+2003,China,HCFC-22,Total,31.40628326
+2004,China,HCFC-22,Total,41.40168109
+2005,China,HCFC-22,Total,52.55857748
+2006,China,HCFC-22,Total,64.85590582
+2007,China,HCFC-22,Total,78.88021934
+2008,China,HCFC-22,Total,93.20557251
+2009,China,HCFC-22,Total,108.0804743
+2010,China,HCFC-22,Total,122.3959052
+2011,China,HCFC-22,Total,133.63834
+2012,China,HCFC-22,Total,152.4984803
+2013,China,HCFC-22,Total,150.8297394
+2014,China,HCFC-22,Total,159.0036446
+1980,China,HCFC-22,Room air conditioning sector,0.001556182
+1981,China,HCFC-22,Room air conditioning sector,0.005545367
+1982,China,HCFC-22,Room air conditioning sector,0.011877041
+1983,China,HCFC-22,Room air conditioning sector,0.02050955
+1984,China,HCFC-22,Room air conditioning sector,0.031405217
+1985,China,HCFC-22,Room air conditioning sector,0.044587606
+1986,China,HCFC-22,Room air conditioning sector,0.064734144
+1987,China,HCFC-22,Room air conditioning sector,0.092576364
+1988,China,HCFC-22,Room air conditioning sector,0.129154171
+1989,China,HCFC-22,Room air conditioning sector,0.17524311
+1990,China,HCFC-22,Room air conditioning sector,0.208514951
+1991,China,HCFC-22,Room air conditioning sector,0.291895046
+1992,China,HCFC-22,Room air conditioning sector,0.484601568
+1993,China,HCFC-22,Room air conditioning sector,0.89225244
+1994,China,HCFC-22,Room air conditioning sector,1.336566254
+1995,China,HCFC-22,Room air conditioning sector,2.068862285
+1996,China,HCFC-22,Room air conditioning sector,2.721885634
+1997,China,HCFC-22,Room air conditioning sector,3.551772526
+1998,China,HCFC-22,Room air conditioning sector,4.336038759
+1999,China,HCFC-22,Room air conditioning sector,5.559698172
+2000,China,HCFC-22,Room air conditioning sector,7.406451097
+2001,China,HCFC-22,Room air conditioning sector,9.679024624
+2002,China,HCFC-22,Room air conditioning sector,12.92505747
+2003,China,HCFC-22,Room air conditioning sector,16.38347145
+2004,China,HCFC-22,Room air conditioning sector,20.75914462
+2005,China,HCFC-22,Room air conditioning sector,25.02956433
+2006,China,HCFC-22,Room air conditioning sector,29.54523779
+2007,China,HCFC-22,Room air conditioning sector,34.09350752
+2008,China,HCFC-22,Room air conditioning sector,38.78071945
+2009,China,HCFC-22,Room air conditioning sector,44.42188785
+2010,China,HCFC-22,Room air conditioning sector,50.49749202
+2011,China,HCFC-22,Room air conditioning sector,56.64404944
+2012,China,HCFC-22,Room air conditioning sector,62.0263304
+2013,China,HCFC-22,Room air conditioning sector,67.70655577
+2014,China,HCFC-22,Room air conditioning sector,72.39788113
+1980,China,HCFC-22,Industrial and commercial refrigeration sector,0
+1981,China,HCFC-22,Industrial and commercial refrigeration sector,0
+1982,China,HCFC-22,Industrial and commercial refrigeration sector,0
+1983,China,HCFC-22,Industrial and commercial refrigeration sector,0
+1984,China,HCFC-22,Industrial and commercial refrigeration sector,0
+1985,China,HCFC-22,Industrial and commercial refrigeration sector,0
+1986,China,HCFC-22,Industrial and commercial refrigeration sector,0
+1987,China,HCFC-22,Industrial and commercial refrigeration sector,0
+1988,China,HCFC-22,Industrial and commercial refrigeration sector,0
+1989,China,HCFC-22,Industrial and commercial refrigeration sector,0
+1990,China,HCFC-22,Industrial and commercial refrigeration sector,0
+1991,China,HCFC-22,Industrial and commercial refrigeration sector,0
+1992,China,HCFC-22,Industrial and commercial refrigeration sector,0
+1993,China,HCFC-22,Industrial and commercial refrigeration sector,0
+1994,China,HCFC-22,Industrial and commercial refrigeration sector,0
+1995,China,HCFC-22,Industrial and commercial refrigeration sector,0
+1996,China,HCFC-22,Industrial and commercial refrigeration sector,0
+1997,China,HCFC-22,Industrial and commercial refrigeration sector,0
+1998,China,HCFC-22,Industrial and commercial refrigeration sector,0
+1999,China,HCFC-22,Industrial and commercial refrigeration sector,2.371360782
+2000,China,HCFC-22,Industrial and commercial refrigeration sector,4.562051338
+2001,China,HCFC-22,Industrial and commercial refrigeration sector,7.242679231
+2002,China,HCFC-22,Industrial and commercial refrigeration sector,9.944136645
+2003,China,HCFC-22,Industrial and commercial refrigeration sector,14.54046181
+2004,China,HCFC-22,Industrial and commercial refrigeration sector,19.22895314
+2005,China,HCFC-22,Industrial and commercial refrigeration sector,25.10310481
+2006,China,HCFC-22,Industrial and commercial refrigeration sector,31.79134303
+2007,China,HCFC-22,Industrial and commercial refrigeration sector,39.27988682
+2008,China,HCFC-22,Industrial and commercial refrigeration sector,47.54552806
+2009,China,HCFC-22,Industrial and commercial refrigeration sector,55.23926143
+2010,China,HCFC-22,Industrial and commercial refrigeration sector,62.18758822
+2011,China,HCFC-22,Industrial and commercial refrigeration sector,66.60696557
+2012,China,HCFC-22,Industrial and commercial refrigeration sector,77.38982489
+2013,China,HCFC-22,Industrial and commercial refrigeration sector,70.41835859
+2014,China,HCFC-22,Industrial and commercial refrigeration sector,73.1534385
+1980,China,HCFC-22,Foam blowing sector,0
+1981,China,HCFC-22,Foam blowing sector,0
+1982,China,HCFC-22,Foam blowing sector,0
+1983,China,HCFC-22,Foam blowing sector,0
+1984,China,HCFC-22,Foam blowing sector,0
+1985,China,HCFC-22,Foam blowing sector,0
+1986,China,HCFC-22,Foam blowing sector,0
+1987,China,HCFC-22,Foam blowing sector,0
+1988,China,HCFC-22,Foam blowing sector,0
+1989,China,HCFC-22,Foam blowing sector,0
+1990,China,HCFC-22,Foam blowing sector,0
+1991,China,HCFC-22,Foam blowing sector,0
+1992,China,HCFC-22,Foam blowing sector,0
+1993,China,HCFC-22,Foam blowing sector,0
+1994,China,HCFC-22,Foam blowing sector,0
+1995,China,HCFC-22,Foam blowing sector,0
+1996,China,HCFC-22,Foam blowing sector,0
+1997,China,HCFC-22,Foam blowing sector,0
+1998,China,HCFC-22,Foam blowing sector,0
+1999,China,HCFC-22,Foam blowing sector,0.0559625
+2000,China,HCFC-22,Foam blowing sector,0.1170125
+2001,China,HCFC-22,Foam blowing sector,0.18315
+2002,China,HCFC-22,Foam blowing sector,0.254375
+2003,China,HCFC-22,Foam blowing sector,0.48235
+2004,China,HCFC-22,Foam blowing sector,1.413583333
+2005,China,HCFC-22,Foam blowing sector,2.425908333
+2006,China,HCFC-22,Foam blowing sector,3.519325
+2007,China,HCFC-22,Foam blowing sector,5.506825
+2008,China,HCFC-22,Foam blowing sector,6.879325
+2009,China,HCFC-22,Foam blowing sector,8.419325
+2010,China,HCFC-22,Foam blowing sector,9.710825
+2011,China,HCFC-22,Foam blowing sector,10.387325
+2012,China,HCFC-22,Foam blowing sector,13.082325
+2013,China,HCFC-22,Foam blowing sector,12.704825
+2014,China,HCFC-22,Foam blowing sector,13.452325
+1980,China,HFC-134a,Total,0
+1981,China,HFC-134a,Total,0
+1982,China,HFC-134a,Total,0
+1983,China,HFC-134a,Total,0
+1984,China,HFC-134a,Total,0
+1985,China,HFC-134a,Total,0
+1986,China,HFC-134a,Total,0
+1987,China,HFC-134a,Total,0
+1988,China,HFC-134a,Total,0
+1989,China,HFC-134a,Total,0
+1990,China,HFC-134a,Total,0
+1991,China,HFC-134a,Total,0
+1992,China,HFC-134a,Total,0
+1993,China,HFC-134a,Total,0
+1994,China,HFC-134a,Total,0
+1995,China,HFC-134a,Total,0.015
+1996,China,HFC-134a,Total,0.04875
+1997,China,HFC-134a,Total,0.0999375
+1998,China,HFC-134a,Total,0.224446875
+1999,China,HFC-134a,Total,0.390279844
+2000,China,HFC-134a,Total,0.616737867
+2001,China,HFC-134a,Total,0.899227187
+2002,China,HFC-134a,Total,1.394343109
+2003,China,HFC-134a,Total,2.265691643
+2004,China,HFC-134a,Total,3.456837896
+2005,China,HFC-134a,Total,4.919812212
+2006,China,HFC-134a,Total,6.72374038
+2007,China,HFC-134a,Total,8.882579323
+2008,China,HFC-134a,Total,10.83069242
+2009,China,HFC-134a,Total,13.67593856
+2010,China,HFC-134a,Total,16.73335106
+2011,China,HFC-134a,Total,21.11906201
+2012,China,HFC-134a,Total,27.91688157
+2013,China,HFC-134a,Total,33.2909749
+2014,China,HFC-134a,Total,37.98362614
+1980,China,CFC-12,Total,4.611626792
+1981,China,CFC-12,Total,6.085045268
+1982,China,CFC-12,Total,6.811467908
+1983,China,CFC-12,Total,7.736000459
+1984,China,CFC-12,Total,9.042343303
+1985,China,CFC-12,Total,10.49634019
+1986,China,CFC-12,Total,11.79059347
+1987,China,CFC-12,Total,12.98103457
+1988,China,CFC-12,Total,14.21800057
+1989,China,CFC-12,Total,15.49928066
+1990,China,CFC-12,Total,17.67964157
+1991,China,CFC-12,Total,20.64549634
+1992,China,CFC-12,Total,23.56016345
+1993,China,CFC-12,Total,27.05394681
+1994,China,CFC-12,Total,29.74977423
+1995,China,CFC-12,Total,36.57494437
+1996,China,CFC-12,Total,27.37228457
+1997,China,CFC-12,Total,21.80964641
+1998,China,CFC-12,Total,21.81459139
+1999,China,CFC-12,Total,17.1982472
+2000,China,CFC-12,Total,14.94207194
+2001,China,CFC-12,Total,12.5618915
+2002,China,CFC-12,Total,11.02169149
+2003,China,CFC-12,Total,9.699019571
+2004,China,CFC-12,Total,8.652411792
+2005,China,CFC-12,Total,7.323996906
+2006,China,CFC-12,Total,6.184191012
+2007,China,CFC-12,Total,5.488595475
+2008,China,CFC-12,Total,4.251496412
+2009,China,CFC-12,Total,3.40909746
+2010,China,CFC-12,Total,2.654233062
+2011,China,CFC-12,Total,1.984263528
+2012,China,CFC-12,Total,1.674926806
+2013,China,CFC-12,Total,1.572832596
+2014,China,CFC-12,Total,1.619255258
+1980,China,CFC-12,Refrigerator sector,0.000279074
+1981,China,CFC-12,Refrigerator sector,0.001992358
+1982,China,CFC-12,Refrigerator sector,0.004388649
+1983,China,CFC-12,Refrigerator sector,0.007467946
+1984,China,CFC-12,Refrigerator sector,0.011230249
+1985,China,CFC-12,Refrigerator sector,0.015675559
+1986,China,CFC-12,Refrigerator sector,0.022835303
+1987,China,CFC-12,Refrigerator sector,0.031548665
+1988,China,CFC-12,Refrigerator sector,0.041815647
+1989,China,CFC-12,Refrigerator sector,0.053636246
+1990,China,CFC-12,Refrigerator sector,0.067010464
+1991,China,CFC-12,Refrigerator sector,0.078705033
+1992,China,CFC-12,Refrigerator sector,0.091076701
+1993,China,CFC-12,Refrigerator sector,0.109249684
+1994,China,CFC-12,Refrigerator sector,0.133578722
+1995,China,CFC-12,Refrigerator sector,0.159272836
+1996,China,CFC-12,Refrigerator sector,0.171889057
+1997,China,CFC-12,Refrigerator sector,0.184510521
+1998,China,CFC-12,Refrigerator sector,0.1911966
+1999,China,CFC-12,Refrigerator sector,0.197972096
+2000,China,CFC-12,Refrigerator sector,0.206630083
+2001,China,CFC-12,Refrigerator sector,0.233031579
+2002,China,CFC-12,Refrigerator sector,0.264135496
+2003,China,CFC-12,Refrigerator sector,0.296267129
+2004,China,CFC-12,Refrigerator sector,0.327437413
+2005,China,CFC-12,Refrigerator sector,0.358095954
+2006,China,CFC-12,Refrigerator sector,0.427435814
+2007,China,CFC-12,Refrigerator sector,0.49306938
+2008,China,CFC-12,Refrigerator sector,0.551646966
+2009,China,CFC-12,Refrigerator sector,0.61232856
+2010,China,CFC-12,Refrigerator sector,0.671456536
+2011,China,CFC-12,Refrigerator sector,0.667598811
+2012,China,CFC-12,Refrigerator sector,0.673247327
+2013,China,CFC-12,Refrigerator sector,0.781397884
+2014,China,CFC-12,Refrigerator sector,0.952374834
+1980,China,CFC-12,Freezer sector,0.005916617
+1981,China,CFC-12,Freezer sector,0.008756097
+1982,China,CFC-12,Freezer sector,0.0119838
+1983,China,CFC-12,Freezer sector,0.015620748
+1984,China,CFC-12,Freezer sector,0.019984692
+1985,China,CFC-12,Freezer sector,0.024864269
+1986,China,CFC-12,Freezer sector,0.029954931
+1987,China,CFC-12,Freezer sector,0.035797621
+1988,China,CFC-12,Freezer sector,0.04227546
+1989,China,CFC-12,Freezer sector,0.04854084
+1990,China,CFC-12,Freezer sector,0.055029765
+1991,China,CFC-12,Freezer sector,0.06254689
+1992,China,CFC-12,Freezer sector,0.071546562
+1993,China,CFC-12,Freezer sector,0.08177087
+1994,China,CFC-12,Freezer sector,0.093247599
+1995,China,CFC-12,Freezer sector,0.105736463
+1996,China,CFC-12,Freezer sector,0.123079103
+1997,China,CFC-12,Freezer sector,0.136807398
+1998,China,CFC-12,Freezer sector,0.150704043
+1999,China,CFC-12,Freezer sector,0.166538008
+2000,China,CFC-12,Freezer sector,0.292240435
+2001,China,CFC-12,Freezer sector,0.303708995
+2002,China,CFC-12,Freezer sector,0.317289998
+2003,China,CFC-12,Freezer sector,0.338338987
+2004,China,CFC-12,Freezer sector,0.362961798
+2005,China,CFC-12,Freezer sector,0.383865751
+2006,China,CFC-12,Freezer sector,0.399080918
+2007,China,CFC-12,Freezer sector,0.421094986
+2008,China,CFC-12,Freezer sector,0.436746992
+2009,China,CFC-12,Freezer sector,0.441684135
+2010,China,CFC-12,Freezer sector,0.44606756
+2011,China,CFC-12,Freezer sector,0.46532719
+2012,China,CFC-12,Freezer sector,0.501279479
+2013,China,CFC-12,Freezer sector,0.541234713
+2014,China,CFC-12,Freezer sector,0.583480423
+1980,China,CFC-12,Industrial and commercial refrigeration sector,1.042271115
+1981,China,CFC-12,Industrial and commercial refrigeration sector,1.308977909
+1982,China,CFC-12,Industrial and commercial refrigeration sector,1.632085473
+1983,China,CFC-12,Industrial and commercial refrigeration sector,2.005113909
+1984,China,CFC-12,Industrial and commercial refrigeration sector,2.477389756
+1985,China,CFC-12,Industrial and commercial refrigeration sector,2.99534027
+1986,China,CFC-12,Industrial and commercial refrigeration sector,3.50432114
+1987,China,CFC-12,Industrial and commercial refrigeration sector,4.111075037
+1988,China,CFC-12,Industrial and commercial refrigeration sector,4.780207385
+1989,China,CFC-12,Industrial and commercial refrigeration sector,5.358556106
+1990,China,CFC-12,Industrial and commercial refrigeration sector,5.740987707
+1991,China,CFC-12,Industrial and commercial refrigeration sector,6.272147061
+1992,China,CFC-12,Industrial and commercial refrigeration sector,6.991391812
+1993,China,CFC-12,Industrial and commercial refrigeration sector,7.811354072
+1994,China,CFC-12,Industrial and commercial refrigeration sector,8.711695184
+1995,China,CFC-12,Industrial and commercial refrigeration sector,9.642186992
+1996,China,CFC-12,Industrial and commercial refrigeration sector,9.760271393
+1997,China,CFC-12,Industrial and commercial refrigeration sector,9.402911597
+1998,China,CFC-12,Industrial and commercial refrigeration sector,10.74384269
+1999,China,CFC-12,Industrial and commercial refrigeration sector,9.126262908
+2000,China,CFC-12,Industrial and commercial refrigeration sector,9.107215111
+2001,China,CFC-12,Industrial and commercial refrigeration sector,8.632192013
+2002,China,CFC-12,Industrial and commercial refrigeration sector,7.992781839
+2003,China,CFC-12,Industrial and commercial refrigeration sector,7.179566395
+2004,China,CFC-12,Industrial and commercial refrigeration sector,6.186162667
+2005,China,CFC-12,Industrial and commercial refrigeration sector,5.017581333
+2006,China,CFC-12,Industrial and commercial refrigeration sector,3.852288
+2007,China,CFC-12,Industrial and commercial refrigeration sector,3.168288
+2008,China,CFC-12,Industrial and commercial refrigeration sector,2.2518
+2009,China,CFC-12,Industrial and commercial refrigeration sector,1.7514
+2010,China,CFC-12,Industrial and commercial refrigeration sector,1.251
+2011,China,CFC-12,Industrial and commercial refrigeration sector,0.834
+2012,China,CFC-12,Industrial and commercial refrigeration sector,0.5004
+2013,China,CFC-12,Industrial and commercial refrigeration sector,0.2502
+2014,China,CFC-12,Industrial and commercial refrigeration sector,0.0834
+1980,China,CFC-12,Mobile air conditioning sector,0.003898691
+1981,China,CFC-12,Mobile air conditioning sector,0.010949529
+1982,China,CFC-12,Mobile air conditioning sector,0.018689583
+1983,China,CFC-12,Mobile air conditioning sector,0.028031745
+1984,China,CFC-12,Mobile air conditioning sector,0.040640663
+1985,China,CFC-12,Mobile air conditioning sector,0.068019655
+1986,China,CFC-12,Mobile air conditioning sector,0.111922247
+1987,China,CFC-12,Mobile air conditioning sector,0.146721186
+1988,China,CFC-12,Mobile air conditioning sector,0.181880769
+1989,China,CFC-12,Mobile air conditioning sector,0.320045253
+1990,China,CFC-12,Mobile air conditioning sector,0.423465307
+1991,China,CFC-12,Mobile air conditioning sector,0.539651366
+1992,China,CFC-12,Mobile air conditioning sector,0.691501097
+1993,China,CFC-12,Mobile air conditioning sector,0.877147906
+1994,China,CFC-12,Mobile air conditioning sector,1.067683991
+1995,China,CFC-12,Mobile air conditioning sector,1.280925433
+1996,China,CFC-12,Mobile air conditioning sector,1.417045014
+1997,China,CFC-12,Mobile air conditioning sector,1.524416899
+1998,China,CFC-12,Mobile air conditioning sector,1.615848063
+1999,China,CFC-12,Mobile air conditioning sector,1.57647419
+2000,China,CFC-12,Mobile air conditioning sector,1.48124647
+2001,China,CFC-12,Mobile air conditioning sector,1.30134113
+2002,China,CFC-12,Mobile air conditioning sector,1.149089514
+2003,China,CFC-12,Mobile air conditioning sector,1.009730357
+2004,China,CFC-12,Mobile air conditioning sector,0.847349914
+2005,China,CFC-12,Mobile air conditioning sector,0.697453867
+2006,China,CFC-12,Mobile air conditioning sector,0.549386279
+2007,China,CFC-12,Mobile air conditioning sector,0.394143109
+2008,China,CFC-12,Mobile air conditioning sector,0.306302455
+2009,China,CFC-12,Mobile air conditioning sector,0.194684765
+2010,China,CFC-12,Mobile air conditioning sector,0.081208966
+2011,China,CFC-12,Mobile air conditioning sector,0.017337526
+2012,China,CFC-12,Mobile air conditioning sector,0
+2013,China,CFC-12,Mobile air conditioning sector,0
+2014,China,CFC-12,Mobile air conditioning sector,0
+1980,China,CFC-12,Foam blowing sector,2.546901997
+1981,China,CFC-12,Foam blowing sector,2.677671616
+1982,China,CFC-12,Foam blowing sector,2.919514274
+1983,China,CFC-12,Foam blowing sector,3.233876156
+1984,China,CFC-12,Foam blowing sector,3.726458507
+1985,China,CFC-12,Foam blowing sector,4.229896359
+1986,China,CFC-12,Foam blowing sector,4.608439993
+1987,China,CFC-12,Foam blowing sector,4.88312329
+1988,China,CFC-12,Foam blowing sector,5.17417892
+1989,China,CFC-12,Foam blowing sector,5.482582746
+1990,China,CFC-12,Foam blowing sector,6.593190745
+1991,China,CFC-12,Foam blowing sector,7.922610272
+1992,China,CFC-12,Foam blowing sector,8.991511362
+1993,China,CFC-12,Foam blowing sector,10.44762784
+1994,China,CFC-12,Foam blowing sector,11.15629851
+1995,China,CFC-12,Foam blowing sector,13.552344
+1996,China,CFC-12,Foam blowing sector,6
+1997,China,CFC-12,Foam blowing sector,6.661
+1998,China,CFC-12,Foam blowing sector,6.663
+1999,China,CFC-12,Foam blowing sector,3.981
+2000,China,CFC-12,Foam blowing sector,1.9905
+2001,China,CFC-12,Foam blowing sector,0.7962
+2002,China,CFC-12,Foam blowing sector,0.3981
+2003,China,CFC-12,Foam blowing sector,0.116
+2004,China,CFC-12,Foam blowing sector,0.116
+2005,China,CFC-12,Foam blowing sector,0
+2006,China,CFC-12,Foam blowing sector,0
+2007,China,CFC-12,Foam blowing sector,0
+2008,China,CFC-12,Foam blowing sector,0
+2009,China,CFC-12,Foam blowing sector,0
+2010,China,CFC-12,Foam blowing sector,0
+2011,China,CFC-12,Foam blowing sector,0
+2012,China,CFC-12,Foam blowing sector,0
+2013,China,CFC-12,Foam blowing sector,0
+2014,China,CFC-12,Foam blowing sector,0
+1980,China,CFC-12,Aerosol sector,1.012359297
+1981,China,CFC-12,Aerosol sector,2.076697759
+1982,China,CFC-12,Aerosol sector,2.224806129
+1983,China,CFC-12,Aerosol sector,2.445889954
+1984,China,CFC-12,Aerosol sector,2.766639436
+1985,China,CFC-12,Aerosol sector,3.162544074
+1986,China,CFC-12,Aerosol sector,3.513119855
+1987,China,CFC-12,Aerosol sector,3.772768776
+1988,China,CFC-12,Aerosol sector,3.997642392
+1989,China,CFC-12,Aerosol sector,4.235919465
+1990,China,CFC-12,Aerosol sector,4.799957585
+1991,China,CFC-12,Aerosol sector,5.769835716
+1992,China,CFC-12,Aerosol sector,6.723135913
+1993,China,CFC-12,Aerosol sector,7.726796443
+1994,China,CFC-12,Aerosol sector,8.587270226
+1995,China,CFC-12,Aerosol sector,11.83447864
+1996,China,CFC-12,Aerosol sector,9.9
+1997,China,CFC-12,Aerosol sector,3.9
+1998,China,CFC-12,Aerosol sector,2.45
+1999,China,CFC-12,Aerosol sector,2.15
+2000,China,CFC-12,Aerosol sector,1.864239844
+2001,China,CFC-12,Aerosol sector,1.29541778
+2002,China,CFC-12,Aerosol sector,0.90029464
+2003,China,CFC-12,Aerosol sector,0.759116703
+2004,China,CFC-12,Aerosol sector,0.8125
+2005,China,CFC-12,Aerosol sector,0.867
+2006,China,CFC-12,Aerosol sector,0.956
+2007,China,CFC-12,Aerosol sector,1.012
+2008,China,CFC-12,Aerosol sector,0.705
+2009,China,CFC-12,Aerosol sector,0.409
+2010,China,CFC-12,Aerosol sector,0.2045
+2011,China,CFC-12,Aerosol sector,0
+2012,China,CFC-12,Aerosol sector,0
+2013,China,CFC-12,Aerosol sector,0
+2014,China,CFC-12,Aerosol sector,0

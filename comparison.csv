@@ -1,7 +1,183 @@
-﻿year,region,substance,dataset,method,value
-2005,China,HCFC-22,OFED,Bottom-up,45.6
-2005,China,HCFC-22,Fang et al. (2018),Bottom-up,34
-2006,China,HCFC-22,Fang et al. (2018),Bottom-up,56
-2007,China,HCFC-22,Fang et al. (2018),Bottom-up,89
-2008,China,HCFC-22,Li et al. (2020),Bottom-up,45
-2009,China,HCFC-22,Li et al. (2020),Bottom-up,67
+year,region,substance,dataset,method,value,sd
+2005,China,HFC-134a,"Su et al., 2015",Bottom-up Inventory,5,
+2006,China,HFC-134a,"Su et al., 2015",Bottom-up Inventory,5.6,
+2007,China,HFC-134a,"Su et al., 2015",Bottom-up Inventory,7.2,
+2008,China,HFC-134a,"Su et al., 2015",Bottom-up Inventory,9.3,
+2009,China,HFC-134a,"Su et al., 2015",Bottom-up Inventory,12.3,
+2010,China,HFC-134a,"Su et al., 2015",Bottom-up Inventory,16.7,
+2005,China,HFC-134a,"Fang et al., 2018",Bottom-up Inventory,4.91982,
+2006,China,HFC-134a,"Fang et al., 2018",Bottom-up Inventory,6.72374,
+2007,China,HFC-134a,"Fang et al., 2018",Bottom-up Inventory,8.88258,
+2008,China,HFC-134a,"Fang et al., 2018",Bottom-up Inventory,10.83068,
+2009,China,HFC-134a,"Fang et al., 2018",Bottom-up Inventory,13.67595,
+2010,China,HFC-134a,"Fang et al., 2018",Bottom-up Inventory,16.73334,
+2011,China,HFC-134a,"Fang et al., 2018",Bottom-up Inventory,21.11905,
+2012,China,HFC-134a,"Fang et al., 2018",Bottom-up Inventory,27.91687,
+2013,China,HFC-134a,"Fang et al., 2018",Bottom-up Inventory,33.29097,
+2014,China,HFC-134a,"Fang et al., 2018",Bottom-up Inventory,37.98363,
+2005,China,HFC-134a,"Li et al., 2019",Bottom-up Inventory,1.65103,
+2006,China,HFC-134a,"Li et al., 2019",Bottom-up Inventory,1.92718,
+2007,China,HFC-134a,"Li et al., 2019",Bottom-up Inventory,2.49174,
+2008,China,HFC-134a,"Li et al., 2019",Bottom-up Inventory,3.22439,
+2009,China,HFC-134a,"Li et al., 2019",Bottom-up Inventory,4.16561,
+2010,China,HFC-134a,"Li et al., 2019",Bottom-up Inventory,5.62334,
+2011,China,HFC-134a,"Li et al., 2019",Bottom-up Inventory,7.56553,
+2012,China,HFC-134a,"Li et al., 2019",Bottom-up Inventory,9.70063,
+2013,China,HFC-134a,"Li et al., 2019",Bottom-up Inventory,11.82889,
+2014,China,HFC-134a,"Li et al., 2019",Bottom-up Inventory,13.97229,
+2015,China,HFC-134a,"Li et al., 2019",Bottom-up Inventory,16.70371,
+2016,China,HFC-134a,"Li et al., 2019",Bottom-up Inventory,19.85205,
+2017,China,HFC-134a,"Li et al., 2019",Bottom-up Inventory,23.14953,
+2005,China,HFC-134a,"Xiang et al., 2022",Bottom-up Inventory,5.79545,
+2006,China,HFC-134a,"Xiang et al., 2022",Bottom-up Inventory,6.13637,
+2007,China,HFC-134a,"Xiang et al., 2022",Bottom-up Inventory,7.04545,
+2008,China,HFC-134a,"Xiang et al., 2022",Bottom-up Inventory,8.18182,
+2009,China,HFC-134a,"Xiang et al., 2022",Bottom-up Inventory,10.11361,
+2010,China,HFC-134a,"Xiang et al., 2022",Bottom-up Inventory,12.44321,
+2011,China,HFC-134a,"Xiang et al., 2022",Bottom-up Inventory,13.35229,
+2012,China,HFC-134a,"Xiang et al., 2022",Bottom-up Inventory,14.31821,
+2013,China,HFC-134a,"Xiang et al., 2022",Bottom-up Inventory,15.625,
+2014,China,HFC-134a,"Xiang et al., 2022",Bottom-up Inventory,17.55679,
+2015,China,HFC-134a,"Xiang et al., 2022",Bottom-up Inventory,18.80679,
+2016,China,HFC-134a,"Xiang et al., 2022",Bottom-up Inventory,21.13639,
+2017,China,HFC-134a,"Xiang et al., 2022",Bottom-up Inventory,23.35229,
+2018,China,HFC-134a,"Xiang et al., 2022",Bottom-up Inventory,26.02271,
+2019,China,HFC-134a,"Xiang et al., 2022",Bottom-up Inventory,28.35229,
+2020,China,HFC-134a,"Xiang et al., 2022",Bottom-up Inventory,30.85229,
+2005,China,HFC-134a,"Wu et al., 2023",Bottom-up Inventory,1.90503,
+2006,China,HFC-134a,"Wu et al., 2023",Bottom-up Inventory,2.46389,
+2007,China,HFC-134a,"Wu et al., 2023",Bottom-up Inventory,3.19087,
+2008,China,HFC-134a,"Wu et al., 2023",Bottom-up Inventory,4.10268,
+2009,China,HFC-134a,"Wu et al., 2023",Bottom-up Inventory,5.54066,
+2010,China,HFC-134a,"Wu et al., 2023",Bottom-up Inventory,7.47879,
+2011,China,HFC-134a,"Wu et al., 2023",Bottom-up Inventory,9.56858,
+2012,China,HFC-134a,"Wu et al., 2023",Bottom-up Inventory,11.65695,
+2013,China,HFC-134a,"Wu et al., 2023",Bottom-up Inventory,13.76747,
+2014,China,HFC-134a,"Wu et al., 2023",Bottom-up Inventory,16.45371,
+2015,China,HFC-134a,"Wu et al., 2023",Bottom-up Inventory,19.54421,
+2016,China,HFC-134a,"Wu et al., 2023",Bottom-up Inventory,22.74495,
+2017,China,HFC-134a,"Wu et al., 2023",Bottom-up Inventory,26.28932,
+2018,China,HFC-134a,"Wu et al., 2023",Bottom-up Inventory,31.18713,
+2019,China,HFC-134a,"Wu et al., 2023",Bottom-up Inventory,36.41029,
+2020,China,HFC-134a,"Wu et al., 2023",Bottom-up Inventory,39.86142,
+2005,China,HFC-134a,EDGAR v7,Bottom-up Inventory,4.9,
+2006,China,HFC-134a,EDGAR v7,Bottom-up Inventory,6.7,
+2007,China,HFC-134a,EDGAR v7,Bottom-up Inventory,8.9,
+2008,China,HFC-134a,EDGAR v7,Bottom-up Inventory,11,
+2009,China,HFC-134a,EDGAR v7,Bottom-up Inventory,14,
+2010,China,HFC-134a,EDGAR v7,Bottom-up Inventory,17,
+2011,China,HFC-134a,EDGAR v7,Bottom-up Inventory,21,
+2012,China,HFC-134a,EDGAR v7,Bottom-up Inventory,28,
+2013,China,HFC-134a,EDGAR v7,Bottom-up Inventory,33,
+2014,China,HFC-134a,EDGAR v7,Bottom-up Inventory,35.97584,
+2015,China,HFC-134a,EDGAR v7,Bottom-up Inventory,39.22005,
+2016,China,HFC-134a,EDGAR v7,Bottom-up Inventory,42.75682,
+2017,China,HFC-134a,EDGAR v7,Bottom-up Inventory,46.6125,
+2018,China,HFC-134a,EDGAR v7,Bottom-up Inventory,50.46818,
+2019,China,HFC-134a,EDGAR v7,Bottom-up Inventory,54.21758,
+2020,China,HFC-134a,EDGAR v7,Bottom-up Inventory,58.03782,
+2005,China,HFC-134a,"Bai et al., 2023",Bottom-up Inventory,6.09579,
+2006,China,HFC-134a,"Bai et al., 2023",Bottom-up Inventory,6.55979,
+2007,China,HFC-134a,"Bai et al., 2023",Bottom-up Inventory,7.49058,
+2008,China,HFC-134a,"Bai et al., 2023",Bottom-up Inventory,8.91489,
+2009,China,HFC-134a,"Bai et al., 2023",Bottom-up Inventory,11.08376,
+2010,China,HFC-134a,"Bai et al., 2023",Bottom-up Inventory,14.966,
+2011,China,HFC-134a,"Bai et al., 2023",Bottom-up Inventory,19.01539,
+2012,China,HFC-134a,"Bai et al., 2023",Bottom-up Inventory,27.57237,
+2013,China,HFC-134a,"Bai et al., 2023",Bottom-up Inventory,29.95208,
+2014,China,HFC-134a,"Bai et al., 2023",Bottom-up Inventory,32.07703,
+2015,China,HFC-134a,"Bai et al., 2023",Bottom-up Inventory,34.88545,
+2016,China,HFC-134a,"Bai et al., 2023",Bottom-up Inventory,37.10768,
+2017,China,HFC-134a,"Bai et al., 2023",Bottom-up Inventory,41.54182,
+2018,China,HFC-134a,"Bai et al., 2023",Bottom-up Inventory,45.97597,
+2019,China,HFC-134a,"Bai et al., 2023",Bottom-up Inventory,48.52647,
+2009,China,HFC-134a,"Yi et al., 2021",Bottom-up Inventory,12.1,
+2010,China,HFC-134a,"Yi et al., 2021",Bottom-up Inventory,14.9,
+2011,China,HFC-134a,"Yi et al., 2021",Bottom-up Inventory,16.8,
+2012,China,HFC-134a,"Yi et al., 2021",Bottom-up Inventory,18.9,
+2013,China,HFC-134a,"Yi et al., 2021",Bottom-up Inventory,21.4,
+2014,China,HFC-134a,"Yi et al., 2021",Bottom-up Inventory,24.2,
+2015,China,HFC-134a,"Yi et al., 2021",Bottom-up Inventory,27.4,
+2016,China,HFC-134a,"Yi et al., 2021",Bottom-up Inventory,31.7,
+2017,China,HFC-134a,"Yi et al., 2021",Bottom-up Inventory,36.6,
+2018,China,HFC-134a,"Yi et al., 2021",Bottom-up Inventory,42.1,
+2019,China,HFC-134a,"Yi et al., 2021",Bottom-up Inventory,47.5,
+2020,China,HFC-134a,"Yi et al., 2021",Bottom-up Inventory,53,
+2008,China,HFC-134a,"Kim et al., 2010",Top-down ISC HCFC-22 tracer,8.7,2.75
+2008,China,HFC-134a,"Li et al., 2011",Top-down ISC HCFC-22 tracer,8.3,2.4
+2009,China,HFC-134a,"Fang et al., 2012",Top-down ISC CO tracer,6.4,2.95
+2009,China,HFC-134a,"Fang et al., 2012",Top-down ISC HCFC-22 tracer,5.7,1
+2009,China,HFC-134a,"Yi et al., 2023a",Top-down ISC HCFC-22 tracer,7.13,0.89418
+2010,China,HFC-134a,"Yi et al., 2023a",Top-down ISC HCFC-22 tracer,9.7,1.02579
+2011,China,HFC-134a,"Yi et al., 2023a",Top-down ISC HCFC-22 tracer,12,0.74189
+2012,China,HFC-134a,"Yi et al., 2023a",Top-down ISC HCFC-22 tracer,17.5,1.16939
+2013,China,HFC-134a,"Yi et al., 2023a",Top-down ISC HCFC-22 tracer,19.87,2.46871
+2014,China,HFC-134a,"Yi et al., 2023a",Top-down ISC HCFC-22 tracer,20.86,1.64
+2015,China,HFC-134a,"Yi et al., 2023a",Top-down ISC HCFC-22 tracer,20.52,2.58479
+2016,China,HFC-134a,"Yi et al., 2023a",Top-down ISC HCFC-22 tracer,22.24,2.92129
+2017,China,HFC-134a,"Yi et al., 2023a",Top-down ISC HCFC-22 tracer,19.83,1.62161
+2018,China,HFC-134a,"Yi et al., 2023a",Top-down ISC HCFC-22 tracer,15.7,1.43711
+2019,China,HFC-134a,"Yi et al., 2023a",Top-down ISC HCFC-22 tracer,19.71,1.86261
+2011,China,HFC-134a,"Lunt et al., 2015",Top-down Inverse Modeling,12.25,8.015
+2011,China,HFC-134a,"Yao et al., 2019",Top-down Inverse Modeling,19.478,2.529
+2012,China,HFC-134a,"Yao et al., 2019",Top-down Inverse Modeling,15.489,5.814
+2013,China,HFC-134a,"Yao et al., 2019",Top-down Inverse Modeling,23.648,8.913
+2014,China,HFC-134a,"Yao et al., 2019",Top-down Inverse Modeling,27.228,6.066
+2015,China,HFC-134a,"Yao et al., 2019",Top-down Inverse Modeling,32.413,8.141
+2016,China,HFC-134a,"Yao et al., 2019",Top-down Inverse Modeling,29.763,5.95
+2017,China,HFC-134a,"Yao et al., 2019",Top-down Inverse Modeling,24.52,2.682
+2021,China,HFC-134a,"Yi et al., 2023b",Top-down ISC HCFC-22 tracer,47.36842,10.52632
+2022,China,HFC-134a,"Hu et al., 2025",Top-down Inverse Modeling,42.63158,5.26316
+2018,China,HFC-134a,"Ma at al., 2025",Top-down Inverse Modeling,30.5,4.8
+2019,China,HFC-134a,"Ma at al., 2025",Top-down Inverse Modeling,28.4,4.8
+2020,China,HFC-134a,"Ma at al., 2025",Top-down Inverse Modeling,33.1,7.5
+2008,China,HFC-134a,"Choi et al., 2024",Top-down Inverse Modeling,10.48648649,2.274930866
+2009,China,HFC-134a,"Choi et al., 2024",Top-down Inverse Modeling,11.16216216,2.534495396
+2010,China,HFC-134a,"Choi et al., 2024",Top-down Inverse Modeling,13.16216216,3.463785302
+2011,China,HFC-134a,"Choi et al., 2024",Top-down Inverse Modeling,14.72972973,4.262051619
+2012,China,HFC-134a,"Choi et al., 2024",Top-down Inverse Modeling,16.45945946,4.061704493
+2013,China,HFC-134a,"Choi et al., 2024",Top-down Inverse Modeling,17.35135135,4.336216755
+2014,China,HFC-134a,"Choi et al., 2024",Top-down Inverse Modeling,19.59459459,5.283628255
+2015,China,HFC-134a,"Choi et al., 2024",Top-down Inverse Modeling,25.59459459,6.248915172
+2016,China,HFC-134a,"Choi et al., 2024",Top-down Inverse Modeling,34.27027027,8.193514155
+2017,China,HFC-134a,"Choi et al., 2024",Top-down Inverse Modeling,34.75675676,8.200420449
+2018,China,HFC-134a,"Choi et al., 2024",Top-down Inverse Modeling,32.67567568,7.206137308
+2019,China,HFC-134a,"Choi et al., 2024",Top-down Inverse Modeling,35.05405405,7.505780582
+2020,China,HFC-134a,"Choi et al., 2024",Top-down Inverse Modeling,34.48648649,7.080101026
+2022,China,HFC-134a,"Li et al., 2025",Top-down Inverse Modeling,42.55515152,3.139242424
+2023,China,HFC-134a,"Li et al., 2025",Top-down Inverse Modeling,59.99575758,7.150606061
+2008,Japan,HFC-134a,"Choi et al., 2024",Top-down Inverse Modeling,6.12,1.27
+2009,Japan,HFC-134a,"Choi et al., 2024",Top-down Inverse Modeling,6.45,1.45
+2010,Japan,HFC-134a,"Choi et al., 2024",Top-down Inverse Modeling,6.76,1.65
+2011,Japan,HFC-134a,"Choi et al., 2024",Top-down Inverse Modeling,6.2,1.47
+2012,Japan,HFC-134a,"Choi et al., 2024",Top-down Inverse Modeling,5.98,1.4
+2013,Japan,HFC-134a,"Choi et al., 2024",Top-down Inverse Modeling,6.75,1.71
+2014,Japan,HFC-134a,"Choi et al., 2024",Top-down Inverse Modeling,6.76,1.7
+2015,Japan,HFC-134a,"Choi et al., 2024",Top-down Inverse Modeling,6.59,1.72
+2016,Japan,HFC-134a,"Choi et al., 2024",Top-down Inverse Modeling,8.16,2.38
+2017,Japan,HFC-134a,"Choi et al., 2024",Top-down Inverse Modeling,11.46,2.73
+2018,Japan,HFC-134a,"Choi et al., 2024",Top-down Inverse Modeling,12.35,2.45
+2019,Japan,HFC-134a,"Choi et al., 2024",Top-down Inverse Modeling,10.83,2.18
+2020,Japan,HFC-134a,"Choi et al., 2024",Top-down Inverse Modeling,9.89,1.89
+2010,Japan,HFC-134a,"Saito et al., 2015",Top-down Inverse Modeling,3.1,0.15
+2011,Japan,HFC-134a,"Saito et al., 2015",Top-down Inverse Modeling,4.1,0.15
+2012,Japan,HFC-134a,"Saito et al., 2015",Top-down Inverse Modeling,2.4,0.25
+2008,Japan,HFC-134a,"Stohl et al., 2010",Top-down Inverse Modeling,3.1,0.2
+2008,Japan,HFC-134a,"Li et al., 2011",Top-down Inverse Modeling,4.7,0.25
+2008,USA,HFC-134a,"Hu et al., 2017",Top-down Inverse Modeling,49.14,11.05
+2009,USA,HFC-134a,"Hu et al., 2017",Top-down Inverse Modeling,42.11,9.59
+2010,USA,HFC-134a,"Hu et al., 2017",Top-down Inverse Modeling,49.81,6.46
+2011,USA,HFC-134a,"Hu et al., 2017",Top-down Inverse Modeling,40.45,6.9
+2012,USA,HFC-134a,"Hu et al., 2017",Top-down Inverse Modeling,37.63,3.23
+2013,USA,HFC-134a,"Hu et al., 2017",Top-down Inverse Modeling,40.8,5.19
+2014,USA,HFC-134a,"Hu et al., 2017",Top-down Inverse Modeling,42.81,5.97
+2005,USA,HFC-134a,"Stohl et al., 2009",Top-down Inverse Modeling,34.8,
+2006,USA,HFC-134a,"Stohl et al., 2009",Top-down Inverse Modeling,28.1,
+2005,USA,HFC-134a,"Simmonds et al., 2015",Top-down Inverse Modeling,38.7,5.9
+2006,USA,HFC-134a,"Simmonds et al., 2015",Top-down Inverse Modeling,37.8,6.4
+2007,USA,HFC-134a,"Simmonds et al., 2015",Top-down Inverse Modeling,37.5,8.7
+2008,USA,HFC-134a,"Simmonds et al., 2015",Top-down Inverse Modeling,44.6,9.5
+2009,USA,HFC-134a,"Simmonds et al., 2015",Top-down Inverse Modeling,48.1,7.4
+2010,USA,HFC-134a,"Simmonds et al., 2015",Top-down Inverse Modeling,62,16.9
+2011,USA,HFC-134a,"Simmonds et al., 2015",Top-down Inverse Modeling,66.8,15.3
+2012,USA,HFC-134a,"Simmonds et al., 2015",Top-down Inverse Modeling,69.6,18.4

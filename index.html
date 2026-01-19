@@ -58,26 +58,44 @@
                     </div>
                 </div>
                 <div class="prose max-w-none text-gray-700 space-y-6">
-                    <p>Accurate quantification of emissions is essential. It transforms invisible releases into actionable insights, enabling scientists and policymakers to track progress, identify sources, verify compliance, and forecast environmental outcomes.</p>
-                    <p>OFED serves as a vital bridge between scientific measurement, effective policy, and planetary health. We consolidate disparate data—from atmospheric observations to industrial reporting—into a trusted, open-access resource to support a sustainable future.</p>
+                    <p class="text-lg leading-relaxed">
+        Accurate quantification of atmospheric emissions is the cornerstone of global environmental governance. 
+        It transforms invisible chemical releases into actionable scientific insights, empowering researchers 
+        and policymakers to monitor mitigation progress with precision. By mapping the trajectory of these 
+        substances, we can identify critical emission hotspots, verify international compliance, and develop 
+        robust forecast models for future environmental outcomes.
+    </p>
+    <p class="text-lg leading-relaxed">
+        OFED serves as a vital strategic bridge, connecting the rigors of scientific measurement with the 
+        demands of effective policy-making for planetary health. We consolidate disparate, multi-source data—ranging 
+        from high-frequency atmospheric observations to granular industrial reporting—into a single, trusted, 
+        open-access resource.
+    </p>
                     <div class="text-center pt-8">
                         <span class="text-2xl font-serif italic text-blue-800">"Data for Action. Science for Protection."</span>
                     </div>
                 </div>
-                <div class="grid md:grid-cols-2 gap-8 mt-16">
-                    <div class="method-box bg-white p-8 rounded-2xl shadow-sm border border-gray-100 cursor-pointer" onclick="showPage('inventory')">
-                        <span class="text-blue-600 font-bold uppercase tracking-widest text-sm">Explore Results</span>
-                        <h3 class="text-2xl font-bold mt-2 mb-4">Bottom-up Inventory Method</h3>
-                        <p class="text-gray-500 mb-4">Detailed accounting based on activity data and emission factors across industrial sectors.</p>
-                        <span class="text-blue-600 font-semibold inline-flex items-center">View Database &rarr;</span>
-                    </div>
-                    <div class="method-box bg-white p-8 rounded-2xl shadow-sm border border-gray-100 cursor-pointer" onclick="showPage('inversion')">
-                        <span class="text-green-600 font-bold uppercase tracking-widest text-sm">Explore Results</span>
-                        <h3 class="text-2xl font-bold mt-2 mb-4">Top-down Inversion Method</h3>
-                        <p class="text-gray-500 mb-4">Independent assessment based on global atmospheric observations and transport models.</p>
-                        <span class="text-green-600 font-semibold inline-flex items-center">View Database &rarr;</span>
-                    </div>
-                </div>
+                <div class="grid md:grid-cols-3 gap-8 mt-16"> <div class="method-box bg-white p-8 rounded-2xl shadow-sm border border-gray-100 cursor-pointer" onclick="showPage('inventory')">
+        <span class="text-blue-600 font-bold uppercase tracking-widest text-sm">Explore Results</span>
+        <h3 class="text-2xl font-bold mt-2 mb-4">Bottom-up Inventory Method</h3>
+        <p class="text-gray-500 mb-4">Detailed accounting based on activity data and emission factors across industrial sectors.</p>
+        <span class="text-blue-600 font-semibold inline-flex items-center">View Database &rarr;</span>
+    </div>
+
+    <div class="method-box bg-white p-8 rounded-2xl shadow-sm border border-gray-100 cursor-pointer" onclick="showPage('inversion')">
+        <span class="text-green-600 font-bold uppercase tracking-widest text-sm">Explore Results</span>
+        <h3 class="text-2xl font-bold mt-2 mb-4">Top-down Inversion Method</h3>
+        <p class="text-gray-500 mb-4">Independent assessment based on global atmospheric observations and transport models.</p>
+        <span class="text-green-600 font-semibold inline-flex items-center">View Database &rarr;</span>
+    </div>
+
+    <div class="method-box bg-white p-8 rounded-2xl shadow-sm border border-gray-100 cursor-pointer" onclick="showPage('comparison')">
+        <span class="text-indigo-600 font-bold uppercase tracking-widest text-sm">Cross-Study Comparison</span>
+        <h3 class="text-2xl font-bold mt-2 mb-4">OFED and Other Datasets</h3>
+        <p class="text-gray-500 mb-4">Comprehensive comparison between OFED results and other established global/regional emission datasets.</p>
+        <span class="text-indigo-600 font-semibold inline-flex items-center">Compare Data &rarr;</span>
+    </div>
+</div>
             </div>
         </section>
 
@@ -95,7 +113,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-5 gap-4 mb-8">
                     <div>
                         <label class="block text-xs font-bold text-gray-400 uppercase mb-1">Substance</label>
-                        <select id="substance-select" onchange="updateInventoryChart('line')" class="w-full border rounded-lg p-2 text-sm focus:ring-2 focus:ring-blue-500">
+                        <select id="substance-select" class="w-full border rounded-lg p-2 text-sm focus:ring-2 focus:ring-blue-500">
                             <option>CFC-11</option><option>CFC-12</option><option>HCFC-22</option>
                             <option>HCFC-141b</option><option>HCFC-142b</option><option>HFC-134a</option>
                             <option>HFC-143a</option><option>HFC-32</option><option>HFC-125</option><option>HFC-152a</option>
@@ -193,28 +211,49 @@
                         Download Data
                     </button>
                 </div>
-                <div class="grid md:grid-cols-5 gap-4 mb-6">
-                    <div>
-                        <label class="block text-xs font-bold text-gray-400 uppercase mb-1">Region</label>
-                        <select id="comp-region" class="w-full border p-2 rounded text-sm">
-                            <option>China</option><option>USA</option><option>EU-27</option><option>India</option><option>Japan</option><option>Global</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-xs font-bold text-gray-400 uppercase mb-1">Substance</label>
-                        <select id="comp-substance" class="w-full border p-2 rounded text-sm">
-                            <option>HCFC-22</option><option>HCFC-141b</option><option>HCFC-142b</option><option>CFC-11</option><option>CFC-12</option>
-                            <option>HFC-134a</option><option>HFC-143a</option><option>HFC-32</option><option>HFC-125</option><option>HFC-152a</option>
-                        </select>
-                    </div>
-                    <div><label class="block text-xs font-bold text-gray-400 uppercase mb-1">Start Year</label><select id="comp-start-year" class="w-full border p-2 rounded text-sm"></select></div>
-                    <div><label class="block text-xs font-bold text-gray-400 uppercase mb-1">End Year</label><select id="comp-end-year" class="w-full border p-2 rounded text-sm"></select></div>
-                    <div class="flex items-end">
-                        <button onclick="renderComparisonChart()" class="w-full bg-indigo-700 text-white font-bold py-2 rounded hover:bg-indigo-800 transition uppercase text-xs h-[38px]">
-                            Update Comparison
-                        </button>
-                    </div>
-                </div>
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-6 items-end">
+    <div>
+        <label class="block text-xs font-bold text-gray-400 uppercase mb-1">Region</label>
+        <select id="comp-region" class="w-full border p-2 rounded text-sm h-[38px] bg-white">
+            <option>China</option><option>USA</option><option>EU-27</option>
+            <option>India</option><option>Japan</option><option>Global</option>
+        </select>
+    </div>
+
+    <div>
+        <label class="block text-xs font-bold text-gray-400 uppercase mb-1">Substance</label>
+        <select id="comp-substance" class="w-full border p-2 rounded text-sm h-[38px] bg-white">
+            <option>HCFC-22</option><option>HCFC-141b</option><option>HCFC-142b</option>
+            <option>CFC-11</option><option>CFC-12</option><option>HFC-134a</option>
+            <option>HFC-143a</option><option>HFC-32</option><option>HFC-125</option><option>HFC-152a</option>
+        </select>
+    </div>
+
+    <div>
+        <label class="block text-xs font-bold text-gray-400 uppercase mb-1">Method Category</label>
+        <select id="comp-method-filter" class="w-full border p-2 rounded text-sm h-[38px] bg-white">
+            <option value="All">All Methods</option>
+            <option value="Bottom-up">Bottom-up</option>
+            <option value="Top-down">Top-down (Inv/ISC)</option>
+        </select>
+    </div>
+
+    <div>
+        <label class="block text-xs font-bold text-gray-400 uppercase mb-1">Start Year</label>
+        <select id="comp-start-year" class="w-full border p-2 rounded text-sm h-[38px] bg-white"></select>
+    </div>
+
+    <div>
+        <label class="block text-xs font-bold text-gray-400 uppercase mb-1">End Year</label>
+        <select id="comp-end-year" class="w-full border p-2 rounded text-sm h-[38px] bg-white"></select>
+    </div>
+
+    <div>
+        <button onclick="renderComparisonChart()" class="w-full bg-indigo-700 text-white font-bold py-2 rounded hover:bg-indigo-800 transition uppercase text-xs h-[38px] flex items-center justify-center">
+            Update Comparison
+        </button>
+    </div>
+</div>
                 <div id="comparison-chart" class="w-full h-[600px]"></div>
             </div>
             <div class="bg-white p-8 rounded-xl shadow border border-gray-100">
@@ -234,42 +273,96 @@
             </div>
         </section>
 
-        <section id="about" class="page">
-            <div class="bg-blue-50 py-12 border-b border-blue-100 text-center px-4 mb-8">
-                <h1 class="text-3xl md:text-4xl font-extrabold text-blue-900 mb-4">Meet the Team</h1>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-                    A professional team dedicated to the research of fluorinated greenhouse gas emissions.
+<section id="about" class="page">
+    <div class="bg-blue-50 py-12 border-b border-blue-100 text-center px-4 mb-8">
+        <h1 class="text-3xl md:text-4xl font-extrabold text-blue-900 mb-4">Meet the Team</h1>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+            A professional team dedicated to the research of fluorinated greenhouse gas emissions.
+        </p>
+    </div>
+
+    <div class="container mx-auto px-4 pb-12 max-w-6xl">
+        
+        <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 mb-12">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4 border-l-4 border-blue-600 pl-4">Team Introduction</h2>
+            <div class="text-gray-600 space-y-4 leading-relaxed">
+                <p>
+                    Our research team is affiliated with the <strong>Climate Change Research Center</strong> of the School of Environmental Science and Engineering. We are dedicated to the compilation of fluorinated greenhouse gas (F-gas) emission inventories, analysis of emission characteristics, and research on mitigation policies. The team consists of experts and scholars in environmental science, atmospheric chemistry, and data science, maintaining long-term cooperative relationships with domestic and international research institutions.
+                </p>
+                <p>
+                    Relying on national research platforms and integrating multi-source data, we have established a comprehensive OFED database. We focus on integrating key research findings, such as HCFC-22 emissions in China, providing crucial data support and decision-making references for national climate change negotiations, environmental policy formulation, and corporate emission reduction actions.
                 </p>
             </div>
-            <div class="container mx-auto px-4 pb-12 max-w-6xl">
-                 <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 mb-12">
-                    <h2 class="text-2xl font-bold text-gray-900 mb-4 border-l-4 border-blue-600 pl-4">Team Introduction</h2>
-                    <p class="text-gray-600 leading-relaxed">
-                        Our research team is affiliated with the <strong>Climate Change Research Center</strong>. We rely on national research platforms and integrate multi-source data to establish the OFED database.
-                    </p>
+        </div>
+
+        <div class="mb-12">
+            <h2 class="text-2xl font-bold text-center text-gray-900 mb-8">Core Members</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 text-center hover:shadow-md transition duration-300">
+                    <div class="w-24 h-24 bg-blue-100 rounded-full mx-auto mb-6 flex items-center justify-center text-blue-600 text-3xl font-bold">
+                        L
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-1">Xuekun Fang</h3>
+                    <p class="text-blue-600 font-medium mb-4">Team Leader</p>
+                    <div class="text-sm text-gray-500 space-y-2">
+                        <p><strong>Focus:</strong> GHG Accounting, Climate Policy</p>
+                        <p class="text-blue-500">fangxuekun@zju.edu.cn</p>
+                    </div>
                 </div>
-                <div class="mb-12">
-                    <h2 class="text-2xl font-bold text-center text-gray-900 mb-8">Core Members</h2>
-                    <div class="grid md:grid-cols-3 gap-8">
-                        <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 text-center hover:shadow-md transition duration-300">
-                            <div class="w-24 h-24 bg-blue-100 rounded-full mx-auto mb-6 flex items-center justify-center text-blue-600 text-3xl font-bold">L</div>
-                            <h3 class="text-xl font-bold text-gray-900 mb-1">Prof. Ming Li</h3>
-                            <p class="text-blue-600 font-medium mb-4">Team Leader</p>
-                        </div>
-                        <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 text-center hover:shadow-md transition duration-300">
-                            <div class="w-24 h-24 bg-green-100 rounded-full mx-auto mb-6 flex items-center justify-center text-green-600 text-3xl font-bold">W</div>
-                            <h3 class="text-xl font-bold text-gray-900 mb-1">Assoc. Prof. Hua Wang</h3>
-                            <p class="text-green-600 font-medium mb-4">Head of Data Science</p>
-                        </div>
-                        <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 text-center hover:shadow-md transition duration-300">
-                            <div class="w-24 h-24 bg-indigo-100 rounded-full mx-auto mb-6 flex items-center justify-center text-indigo-600 text-3xl font-bold">Z</div>
-                            <h3 class="text-xl font-bold text-gray-900 mb-1">Dr. Wei Zhang</h3>
-                            <p class="text-indigo-600 font-medium mb-4">Senior Researcher</p>
-                        </div>
+
+                <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 text-center hover:shadow-md transition duration-300">
+                    <div class="w-24 h-24 bg-green-100 rounded-full mx-auto mb-6 flex items-center justify-center text-green-600 text-3xl font-bold">
+                        W
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-1">Jianxin Hu</h3>
+                    <p class="text-green-600 font-medium mb-4">Team Leader</p>
+                    <div class="text-sm text-gray-500 space-y-2">
+                        <p><strong>Focus:</strong> Environmental Big Data, Modeling</p>
+                        <p class="text-blue-500">jianxin@pku.edu.cn</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 text-center hover:shadow-md transition duration-300">
+                    <div class="w-24 h-24 bg-indigo-100 rounded-full mx-auto mb-6 flex items-center justify-center text-indigo-600 text-3xl font-bold">
+                        Z
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-1">Jing Wu</h3>
+                    <p class="text-indigo-600 font-medium mb-4">Team Leader</p>
+                    <div class="text-sm text-gray-500 space-y-2">
+                        <p><strong>Focus:</strong> Atmospheric Chemistry, Emissions</p>
+                        <p class="text-blue-500">wujing.108@bjtu.edu.cn</p>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+
+        <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6 border-l-4 border-indigo-600 pl-4">Partner Institutions</h2>
+            <div class="grid md:grid-cols-2 gap-8 text-sm text-gray-700">
+                <div>
+                    <h4 class="font-bold text-gray-900 mb-3 uppercase tracking-wide text-xs">Domestic Partners</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-center"><span class="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>Chinese Research Academy of Environmental Sciences (CRAES)</li>
+                        <li class="flex items-center"><span class="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>Institute of Atmospheric Physics, CAS (IAP)</li>
+                        <li class="flex items-center"><span class="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>Chinese Academy of Environmental Planning (CAEP)</li>
+                        <li class="flex items-center"><span class="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>School of Environment, Tsinghua University</li>
+                        <li class="flex items-center"><span class="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>College of Environmental Sciences, Peking University</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-gray-900 mb-3 uppercase tracking-wide text-xs">International Partners</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-center"><span class="w-2 h-2 bg-green-500 rounded-full mr-3"></span>United Nations Environment Programme (UNEP)</li>
+                        <li class="flex items-center"><span class="w-2 h-2 bg-green-500 rounded-full mr-3"></span>World Meteorological Organization (WMO)</li>
+                        <li class="flex items-center"><span class="w-2 h-2 bg-green-500 rounded-full mr-3"></span>International Energy Agency (IEA)</li>
+                        <li class="flex items-center"><span class="w-2 h-2 bg-green-500 rounded-full mr-3"></span>U.S. Environmental Protection Agency (EPA)</li>
+                        <li class="flex items-center"><span class="w-2 h-2 bg-green-500 rounded-full mr-3"></span>European Commission Joint Research Centre (JRC)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
         <div id="auth-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50">
             <div class="bg-white w-full max-w-md rounded-xl p-6">
@@ -289,10 +382,11 @@
 
     </main>
 
-    <footer class="bg-gray-900 text-gray-400 py-12 border-t border-gray-800">
+<footer class="bg-gray-900 text-gray-400 py-12 border-t border-gray-800">
         <div class="container mx-auto px-4 text-center">
             <p class="text-white mb-2">Ozone-depleting Substances & Fluorinated gases Emissions Database (OFED)</p>
-            <p class="text-sm">Contact: <a href="mailto:contact@ofed.com" class="text-blue-400 underline">contact@ofed.com</a></p>
+            <p class="text-sm">If there are any omissions or errors, please inform us by email: <a href="mailto:contact@ofed.com" class="text-blue-400 underline">contact@ofed.com</a></p>
+            <p class="mt-6 text-xs text-gray-600 tracking-widest uppercase italic">www.ofed.com</p>
         </div>
     </footer>
 
@@ -422,278 +516,499 @@
     }
 
     // 5. Chart Logic - Inventory
-    function updateInventoryChart(type) {
-        currentInvChartType = type;
-        if(inventoryData.length === 0) return;
+function updateInventoryChart(type) {
+    currentInvChartType = type;
+    
+    const substance = document.getElementById('substance-select').value;
+    const region    = document.getElementById('region-select').value;
+    const sYear     = parseInt(document.getElementById('start-year').value);
+    const eYear     = parseInt(document.getElementById('end-year').value);
 
-        const substance = document.getElementById('substance-select').value;
-        const region    = document.getElementById('region-select').value;
-        const sYear     = parseInt(document.getElementById('start-year').value);
-        const eYear     = parseInt(document.getElementById('end-year').value);
-
-        if (sYear > eYear) { alert("Start year cannot be greater than end year"); return; }
-
-        const filtered = inventoryData.filter(d =>
-            d.substance === substance && d.region === region && d.year >= sYear && d.year <= eYear
-        );
-
-        const chartDom = document.getElementById('inventory-chart');
-        const oldChart = echarts.getInstanceByDom(chartDom);
-        if (oldChart) oldChart.dispose();
-        const chart = echarts.init(chartDom);
-        const uniqueYears = [...new Set(filtered.map(d => d.year))].sort((a, b) => a - b);
-
-        let option = {};
-
-        if (type === "line") {
-            const totalData = uniqueYears.map(y => {
-                // Try to find a row where sector is 'Total' or sum up all sectors if needed.
-                // Assuming your CSV has a "Total" sector row:
-                const row = filtered.find(d => d.year === y && (d.sector === "Total" || d.sector === "total"));
-                return row ? row.value : 0;
-            });
-            option = {
-                title: { text: `${substance} Inventory Emissions (${region})`, left: "center" },
-                tooltip: { trigger: "axis" },
-                xAxis: { type: "category", data: uniqueYears },
-                yAxis: { type: "value", name: "Gg yr⁻¹" },
-                series: [{ name: "Total", type: "line", smooth: true, data: totalData, areaStyle: {} }]
-            };
-        } else {
-            const sectors = [...new Set(filtered.map(d => d.sector).filter(s => s !== "Total" && s !== "total"))];
-            const series = sectors.map(sec => ({
-                name: sec,
-                type: "bar",
-                stack: "total",
-                data: uniqueYears.map(y => {
-                    const row = filtered.find(d => d.year === y && d.sector === sec);
-                    return row ? row.value : 0;
-                })
-            }));
-            option = {
-                title: { text: `${substance} Sectoral Breakdown (${region})`, left: "center" },
-                tooltip: { trigger: "axis", axisPointer: { type: "shadow" } },
-                legend: { bottom: 0 },
-                xAxis: { type: "category", data: uniqueYears },
-                yAxis: { type: "value", name: "Gg yr⁻¹" },
-                series: series
-            };
-        }
-        chart.setOption(option);
-    }
-
-    // 6. Chart Logic - Inversion
-function renderInversionChart() {
-
-    var chartDom = document.getElementById("inversion-chart");
+    const chartDom = document.getElementById('inventory-chart');
     if (!chartDom) return;
 
-    var substance = document.getElementById("inv-substance").value;
-    var region = document.getElementById("inv-country").value;
-    var sYear = parseInt(document.getElementById("inv-start-year").value);
-    var eYear = parseInt(document.getElementById("inv-end-year").value);
+    let chart = echarts.getInstanceByDom(chartDom);
+    if (chart) { chart.dispose(); }
+    chart = echarts.init(chartDom);
 
     if (sYear > eYear) {
         alert("Start year cannot be greater than end year");
         return;
     }
 
-    var filtered = inversionData.filter(function (d) {
-        return d.substance === substance &&
-               d.region === region &&
-               d.year >= sYear &&
-               d.year <= eYear;
-    });
+    const yearRange = [];
+    for (let y = sYear; y <= eYear; y++) {
+        yearRange.push(y);
+    }
 
-    var oldChart = echarts.getInstanceByDom(chartDom);
-    if (oldChart) oldChart.dispose();
-    var chart = echarts.init(chartDom);
+    let filtered = inventoryData.filter(d =>
+        d.substance === substance && 
+        d.region === region && 
+        d.year >= sYear && 
+        d.year <= eYear
+    );
 
-    if (filtered.length === 0) {
-        chart.clear();
+    const hasData = filtered.length > 0 && filtered.some(d => parseFloat(d.value) > 0);
+
+    if (!hasData) {
+        chart.setOption({
+            title: { text: `${substance} Inventory Emissions (${region})`, left: "center" },
+            graphic: {
+                type: 'text',
+                left: 'center',
+                top: 'middle',
+                style: { text: 'No Data Available', fill: '#999', font: 'bold 18px sans-serif' }
+            },
+            xAxis: { show: false },
+            yAxis: { show: false },
+            series: []
+        });
         return;
     }
 
-    var years = [];
-    filtered.forEach(function (d) {
-        if (years.indexOf(d.year) === -1) years.push(d.year);
-    });
-    years.sort(function (a, b) { return a - b; });
+    let option = {
+        title: { 
+            text: type === "line" ? `${substance} Inventory Emissions (${region})` : `${substance} Sectoral Breakdown (${region})`,
+            left: "center" 
+        },
+        tooltip: { trigger: "axis" },
+        grid: { bottom: '15%', left: '10%', right: '10%', containLabel: true },
+        xAxis: { 
+            type: "category", 
+            data: yearRange,
+            axisLabel: {
+                interval: 0,
+                rotate: yearRange.length > 10 ? 45 : 0 
+            },
+            axisTick: { alignWithLabel: true }
+        },
+        yAxis: { type: "value", name: "Gg yr⁻¹" }
+    };
 
-    var studies = [];
-    filtered.forEach(function (d) {
-        if (studies.indexOf(d.study) === -1) studies.push(d.study);
-    });
-
-    var series = [];
-    var allValues = [];
-
-    studies.forEach(function (study) {
-
-        var rows = filtered.filter(function (d) {
-            return d.study === study;
+    if (type === "line") {
+        const totalData = yearRange.map(y => {
+            const row = filtered.find(d => d.year === y && (d.sector.toLowerCase() === "total"));
+            // 修改点：如果没有找到数据或数值无效，返回 null 而不是 0
+            return (row && row.value !== undefined && row.value !== null) ? row.value : null;
         });
 
-        var lineData = [];
-        var errorData = [];
+        option.series = [{
+            name: "Total",
+            type: "line",
+            smooth: true,
+            connectNulls: false, // 设置为 false，则 null 处线段会断开；设置为 true 则会跳过 null 连线
+            data: totalData,
+            areaStyle: { opacity: 0.3 },
+            symbol: 'circle',
+            symbolSize: 8
+        }];
+    } else {
+        const sectors = [...new Set(filtered.map(d => d.sector).filter(s => s.toLowerCase() !== "total"))];
+        option.legend = { bottom: 0 };
+        option.tooltip.axisPointer = { type: "shadow" };
+        
+        option.series = sectors.map(sec => ({
+            name: sec,
+            type: "bar",
+            stack: "total",
+            data: yearRange.map(y => {
+                const row = filtered.find(d => d.year === y && d.sector === sec);
+                // 修改点：返回 null
+                return (row && row.value !== undefined && row.value !== null) ? row.value : null;
+            })
+        }));
+    }
 
-        years.forEach(function (y, idx) {
-            var r = rows.find(function (d) {
-                return d.year === y;
-            });
+    chart.setOption(option);
+}
 
+    // 6. Chart Logic - Inversion
+function renderInversionChart() {
+    const chartDom = document.getElementById("inversion-chart");
+    if (!chartDom) return;
+
+    // 1. 获取当前筛选值
+    const substance = document.getElementById("inv-substance").value;
+    const region = document.getElementById("inv-country").value;
+    const sYear = parseInt(document.getElementById("inv-start-year").value);
+    const eYear = parseInt(document.getElementById("inv-end-year").value);
+
+    // 校验年份逻辑
+    if (sYear > eYear) {
+        alert("Start year cannot be greater than end year");
+        return;
+    }
+
+    // 初始化/获取图表实例
+    let chart = echarts.getInstanceByDom(chartDom);
+    if (chart) {
+        chart.dispose();
+    }
+    chart = echarts.init(chartDom);
+
+    // 2. 构造完整的横坐标年份数组
+    // 确保这是一个连续的整数数组，使数据点落在刻度线上
+    const yearRange = [];
+    for (let y = sYear; y <= eYear; y++) {
+        yearRange.push(y);
+    }
+
+    // 3. 过滤数据
+    const filtered = inversionData.filter(d =>
+        d.substance === substance &&
+        d.region === region &&
+        d.year >= sYear &&
+        d.year <= eYear
+    );
+
+    // 4. 检查是否有数据（无数据时显示提示）
+    if (filtered.length === 0) {
+        chart.setOption({
+            title: { text: `${substance} Inversion Emissions (${region})`, left: "center" },
+            graphic: {
+                type: 'text',
+                left: 'center',
+                top: 'middle',
+                style: { text: 'No Data Available', fill: '#999', font: 'bold 18px sans-serif' }
+            },
+            xAxis: { show: false },
+            yAxis: { show: false },
+            series: []
+        });
+        return;
+    }
+
+    const studies = [...new Set(filtered.map(d => d.study))];
+    let series = [];
+    let allValues = [0]; 
+
+    // 5. 构造 Series
+    studies.forEach(study => {
+        const rows = filtered.filter(d => d.study === study);
+        const lineData = [];
+        const errorData = [];
+
+        // 遍历 yearRange 确保每个年份索引对应正确
+        yearRange.forEach((y, idx) => {
+            const r = rows.find(d => d.year === y);
+            
+            // 如果该年份没有该研究的数据，存入 null 以保持坐标对齐且不连线
             if (!r) {
-                lineData.push(null);
+                lineData.push(null); 
                 return;
             }
 
-            // ✅ ES5 安全写法（关键修复）
-            var val = (r.mean !== undefined && r.mean !== null)
-                ? r.mean
-                : r.Mean;
-
-            var sd = (r.sd !== undefined && r.sd !== null)
-                ? r.sd
-                : r.SD;
+            const val = r.mean ?? r.Mean;
+            const sd  = r.sd ?? r.SD ?? 0;
 
             if (val !== undefined && val !== null) {
-                lineData.push(val);
+                // 存入对象以便 formatter 调用
+                lineData.push({
+                    value: val,
+                    sdValue: sd 
+                });
                 allValues.push(val);
 
-                if (sd !== undefined && sd !== null && !isNaN(sd)) {
-                    errorData.push([idx, val - sd, val + sd]);
-                    allValues.push(val - sd, val + sd);
+                if (sd > 0) {
+                    const low = val - sd;
+                    const high = val + sd;
+                    // 存储索引 idx 以确保误差棒精准对齐刻度
+                    errorData.push([idx, low, high]);
+                    allValues.push(high);
                 }
             } else {
                 lineData.push(null);
             }
         });
 
+        // 折线系列配置
         series.push({
             name: study,
             type: "line",
             data: lineData,
-            smooth: true,
+            smooth: false,      // 需求1：直线连接
             symbol: "circle",
-            symbolSize: 6
+            symbolSize: 8,
+            z: 20,
+            connectNulls: false // 需求2：无数据不显示且断开连接
         });
 
+        // 误差棒系列配置
         if (errorData.length > 0) {
             series.push({
-                name: study + " error",
                 type: "custom",
-                tooltip: { show: false },
+                name: study,
                 renderItem: function (params, api) {
-
-                    var x = api.value(0);
-                    var low = api.coord([x, api.value(1)]);
-                    var high = api.coord([x, api.value(2)]);
-                    var half = 4;
-
-                    var style = api.style({
+                    const xIndex = api.value(0);
+                    const low = api.coord([xIndex, api.value(1)]);
+                    const high = api.coord([xIndex, api.value(2)]);
+                    const half = 5; // 误差棒横线宽度
+                    const style = api.style({
                         stroke: api.visual('color'),
-                        lineWidth: 1.2,
-                        fill: null
+                        lineWidth: 1.5
                     });
-
                     return {
                         type: 'group',
                         children: [
-                            { type: 'line', shape: { x1: high[0], y1: high[1], x2: low[0], y2: low[1] }, style: style },
-                            { type: 'line', shape: { x1: high[0]-half, y1: high[1], x2: high[0]+half, y2: high[1] }, style: style },
-                            { type: 'line', shape: { x1: low[0]-half, y1: low[1], x2: low[0]+half, y2: low[1] }, style: style }
+                            { type: 'line', shape: { x1: high[0], y1: high[1], x2: low[0], y2: low[1] }, style },
+                            { type: 'line', shape: { x1: high[0]-half, y1: high[1], x2: high[0]+half, y2: high[1] }, style },
+                            { type: 'line', shape: { x1: low[0]-half, y1: low[1], x2: low[0]+half, y2: low[1] }, style }
                         ]
                     };
                 },
                 data: errorData,
-                z: 10
+                z: 10,
+                tooltip: { show: false }
             });
         }
     });
 
-    var yMin = 0, yMax = 100;
-    if (allValues.length > 0) {
-        yMin = Math.max(0, Math.min.apply(null, allValues) * 0.8);
-        yMax = Math.max.apply(null, allValues) * 1.1;
-    }
+    // 计算 Y 轴动态范围
+    const rawMax = Math.max(...allValues);
+    const interval = Math.ceil((rawMax || 10) / 5 / 2) * 2; 
+    const yMax = interval * 5;
 
+    // 6. 设置图表最终 Option
     chart.setOption({
-        title: {
-            text: substance + " Inversion Emissions (" + region + ")",
-            left: "center"
+        title: { 
+            text: `${substance} Inversion Emissions (${region})`, 
+            left: "center",
+            top: 10 
         },
-        tooltip: { trigger: "axis" },
-        legend: { bottom: 0 },
-        grid: {
-            left: '3%',
-            right: '4%',
-            bottom: '12%',
-            containLabel: true
+        tooltip: { 
+            trigger: "axis",
+            backgroundColor: 'rgba(255, 255, 255, 0.9)',
+            formatter: function(params) {
+                let res = `<b>Year: ${params[0].name}</b><br/>`;
+                let hasValidData = false;
+                params.forEach(p => {
+                    if (p.seriesType === 'line' && p.value !== null && p.value !== undefined) {
+                        const val = typeof p.value === 'object' ? p.value.value : p.value;
+                        const sd = p.data.sdValue !== undefined ? p.data.sdValue : 0;
+                        res += `${p.marker} ${p.seriesName}: <b>${val}</b> (±${sd})<br/>`;
+                        hasValidData = true;
+                    }
+                });
+                return hasValidData ? res : null; // 如果整行无数据则不显示 Tooltip
+            }
         },
+        legend: { bottom: 5, data: studies },
+        grid: { left: '5%', right: '5%', bottom: '15%', containLabel: true },
         xAxis: {
             type: "category",
-            data: years
+            data: yearRange,
+            // 关键修改：boundaryGap 设为 true 让点落在刻度中间，
+            // 配合 axisTick 的 alignWithLabel 确保刻度线对准年份。
+            boundaryGap: true, 
+            axisTick: {
+                alignWithLabel: true 
+            },
+            axisLabel: {
+                interval: 0,
+                rotate: yearRange.length > 12 ? 45 : 0 // 年份过多自动旋转
+            }
         },
         yAxis: {
             type: "value",
             name: "Gg yr⁻¹",
-            min: yMin,
-            max: yMax
+            min: 0,
+            max: yMax,
+            interval: interval,
+            splitLine: { lineStyle: { type: 'dashed' } },
+            axisTick: { show: true },
+            axisLine: { show: true }
         },
         series: series
     });
 }
 
 
+// 7. Chart Logic - Comparison
+function renderComparisonChart() {
+    const chartDom = document.getElementById("comparison-chart");
+    if (!chartDom) return;
 
-    // 7. Chart Logic - Comparison
-    function renderComparisonChart() {
-        if(comparisonData.length === 0) return;
-        const substance = document.getElementById("comp-substance").value;
-        const region    = document.getElementById("comp-region").value;
-        const sYear     = parseInt(document.getElementById("comp-start-year").value);
-        const eYear     = parseInt(document.getElementById("comp-end-year").value);
+    // 1. 获取当前筛选值
+    const substance = document.getElementById("comp-substance").value;
+    const region = document.getElementById("comp-region").value;
+    const sYear = parseInt(document.getElementById("comp-start-year").value);
+    const eYear = parseInt(document.getElementById("comp-end-year").value);
+    const methodFilter = document.getElementById("comp-method-filter").value;
 
-        const filtered = comparisonData.filter(d =>
-            d.substance === substance && d.region === region && d.year >= sYear && d.year <= eYear
-        );
+    // 校验年份逻辑
+    if (sYear > eYear) {
+        alert("Start year cannot be greater than end year");
+        return;
+    }
 
-        const uniqueYears = [...new Set(filtered.map(d => d.year))].sort((a,b)=>a-b);
-        const datasets = [...new Set(filtered.map(d => d.dataset))];
+    // 2. 构造完整的横坐标年份数组（满足需求2：横坐标随起始/终止年份动态变化）
+    const yearRange = [];
+    for (let y = sYear; y <= eYear; y++) {
+        yearRange.push(y);
+    }
 
-        const chartDom = document.getElementById("comparison-chart");
-        if(echarts.getInstanceByDom(chartDom)) echarts.dispose(chartDom);
-        const chart = echarts.init(chartDom);
+    // 3. 初始化/获取图表实例
+    let chart = echarts.getInstanceByDom(chartDom);
+    if (chart) {
+        chart.dispose();
+    }
+    chart = echarts.init(chartDom);
 
-        let series = [];
-        let tableHTML = "";
+    // 4. 过滤基础数据
+    let filtered = comparisonData.filter(d =>
+        d.substance === substance &&
+        d.region === region &&
+        d.year >= sYear &&
+        d.year <= eYear
+    );
 
-        datasets.forEach(name => {
-            const rows = filtered.filter(d => d.dataset === name);
-            const data = uniqueYears.map(y => {
-                const r = rows.find(d => d.year === y);
-                return r ? r.value : null;
-            });
-            const method = rows[0]?.method || "Unknown";
-
-            series.push({
-                name: name, type: "line", data: data,
-                symbol: method.includes("Bottom-up") ? "circle" : "emptyTriangle"
-            });
-
-            tableHTML += `<tr><td class="px-6 py-4">${name}</td><td class="px-6 py-4">${method}</td><td class="px-6 py-4">${sYear}-${eYear}</td></tr>`;
-        });
-
-        document.getElementById("comp-table-body").innerHTML = tableHTML;
-        chart.setOption({
-            title: { text: `${substance} Emission Comparison (${region})`, left: "center" },
-            tooltip: { trigger: "axis" },
-            legend: { bottom: 0 },
-            xAxis: { type: "category", data: uniqueYears },
-            yAxis: { type: "value", name: "Gg yr⁻¹" },
-            series: series
+    // 方法学筛选
+    if (methodFilter !== 'All') {
+        filtered = filtered.filter(d => {
+            const m = (d.method || "").toLowerCase();
+            if (methodFilter === 'Bottom-up') return m.includes('bottom-up');
+            if (methodFilter === 'Top-down') return m.includes('inverse') || m.includes('isc');
+            return true;
         });
     }
+
+    // 检查是否有数据
+    if (filtered.length === 0) {
+        chart.setOption({
+            title: { text: `${substance} Emission Comparison (${region})`, left: "center" },
+            graphic: {
+                type: 'text', left: 'center', top: 'middle',
+                style: { text: 'No Data Available', fill: '#999', font: 'bold 18px sans-serif' }
+            },
+            xAxis: { show: false }, yAxis: { show: false }, series: []
+        });
+        return;
+    }
+
+    const datasets = [...new Set(filtered.map(d => d.dataset))];
+    let series = [];
+    let tableHTML = "";
+    let allValuesForScale = [0];
+
+    // 5. 构造 Series 数据
+    datasets.forEach(name => {
+        const rows = filtered.filter(d => d.dataset === name);
+        const lineData = [];
+        const errorData = [];
+        const method = rows[0]?.method || "Unknown";
+
+        // 遍历完整的 yearRange 以确保数据点对齐坐标轴
+        yearRange.forEach((y, idx) => {
+            const r = rows.find(d => d.year === y);
+            if (!r) {
+                lineData.push(null); // 无数据年份填充 null，避免连线错误
+                return;
+            }
+
+            const val = r.value ?? r.mean ?? r.Mean;
+            const sd = r.sd ?? r.SD;
+
+            if (val !== undefined && val !== null) {
+                lineData.push(val);
+                allValuesForScale.push(val);
+
+                // 记录误差棒数据
+                if (sd !== undefined && sd !== null && !isNaN(sd)) {
+                    const upper = val + sd;
+                    const lower = val - sd;
+                    errorData.push([idx, lower, upper]); // 使用索引对齐横坐标
+                    allValuesForScale.push(upper, lower);
+                }
+            } else {
+                lineData.push(null);
+            }
+        });
+
+        // 添加主折线（需求1：smooth: false 为直线）
+        series.push({
+            name: name,
+            type: "line",
+            data: lineData,
+            smooth: false,      // 直线相连
+            connectNulls: false, // 缺失数据处断开
+            symbol: method.toLowerCase().includes("bottom-up") ? "circle" : "emptyTriangle",
+            symbolSize: 8,
+            z: 20
+        });
+
+        // 添加误差棒 (Custom Series)
+        if (errorData.length > 0) {
+            series.push({
+                type: "custom",
+                name: name,
+                renderItem: function (params, api) {
+                    const xIndex = api.value(0);
+                    const low = api.coord([xIndex, api.value(1)]);
+                    const high = api.coord([xIndex, api.value(2)]);
+                    const half = 4;
+                    const style = api.style({
+                        stroke: api.visual('color'), lineWidth: 1.5, fill: null
+                    });
+                    return {
+                        type: 'group',
+                        children: [
+                            { type: 'line', shape: { x1: high[0], y1: high[1], x2: low[0], y2: low[1] }, style },
+                            { type: 'line', shape: { x1: high[0] - half, y1: high[1], x2: high[0] + half, y2: high[1] }, style },
+                            { type: 'line', shape: { x1: low[0] - half, y1: low[1], x2: low[0] + half, y2: low[1] }, style }
+                        ]
+                    };
+                },
+                data: errorData,
+                z: 10,
+                tooltip: { show: false }
+            });
+        }
+
+        tableHTML += `<tr><td class="px-6 py-4">${name}</td><td class="px-6 py-4">${method}</td><td class="px-6 py-4">${sYear}-${eYear}</td></tr>`;
+    });
+
+    // 动态 Y 轴步长计算
+    const rawMax = Math.max(...allValuesForScale);
+    const splitNumber = 5;
+    let interval = Math.ceil((rawMax || 100) / splitNumber / 5) * 5;
+    if (interval === 0) interval = 10;
+    const yMax = interval * splitNumber;
+
+    // 更新底部表格内容
+    const tableBody = document.getElementById("comp-table-body");
+    if (tableBody) tableBody.innerHTML = tableHTML;
+
+    // 6. 配置图表
+    chart.setOption({
+        title: { 
+            text: `${substance} Emission Comparison (${region})`, 
+            left: "center",
+            top: 10
+        },
+        tooltip: { trigger: "axis" },
+        legend: { bottom: 5, data: datasets },
+        grid: { left: '5%', right: '5%', bottom: '15%', containLabel: true },
+        xAxis: { 
+            type: "category", 
+            data: yearRange, // 关键：使用完整的连续年份数组
+            boundaryGap: true,
+            axisTick: { alignWithLabel: true }, // 刻度线对齐文字中心
+            axisLabel: {
+                interval: 0,
+                rotate: yearRange.length > 10 ? 45 : 0 // 年份较多时自动旋转
+            }
+        },
+        yAxis: { 
+            type: "value", 
+            name: "Gg yr⁻¹",
+            min: 0,
+            max: yMax,
+            interval: interval,
+            splitLine: { show: true, lineStyle: { type: 'dashed' } } // 使用虚线网格
+        },
+        series: series
+    });
+}
 
     // 8. Auth & Downloads (Simulated)
     function openAuthModal() { document.getElementById('auth-modal').classList.remove('hidden'); }
