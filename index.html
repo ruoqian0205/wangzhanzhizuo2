@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OFED - Ozone-depleting Substances & Fluorinated gases Emissions Database</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+    <style>
+        .page { display: none; }
+        .page.active { display: block; }
+        .nav-link.active { border-bottom: 2px solid white; font-weight: bold; }
+        .method-box { transition: all 0.3s ease; }
+        .method-box:hover { transform: translateY(-5px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
+    </style>
+</head>
+<body class="bg-gray-50 flex flex-col min-h-screen font-sans">
+
+    <nav class="bg-blue-900 text-white sticky top-0 z-50 shadow-md">
+        <div class="container mx-auto px-4 flex justify-between items-center h-16">
+            <div class="flex items-center space-x-2">
+                <span class="text-2xl font-bold tracking-tighter cursor-pointer" onclick="showPage('home')">OFED</span>
+            </div>
+            <div class="hidden lg:flex space-x-6 text-sm uppercase tracking-wide">
+                <button onclick="showPage('home')" id="nav-home" class="nav-link py-2 hover:text-blue-300 transition">Datbase Introcution</button>
+                <button onclick="showPage('inventory')" id="nav-inventory" class="nav-link py-2 hover:text-blue-300 transition">Inventory Emission</button>
+                <button onclick="showPage('inversion')" id="nav-inversion" class="nav-link py-2 hover:text-blue-300 transition">Inversion Emission</button>
+                <button onclick="showPage('comparison')" id="nav-comparison" class="nav-link py-2 hover:text-blue-300 transition">OFED and Other datasets</button>
+                <button onclick="showPage('about')" id="nav-about" class="nav-link py-2 hover:text-blue-300 transition">About Team</button>
+            </div>
+<div id="user-status">
+    <button onclick="openAuthModal()" 
+        class="bg-blue-600 hover:bg-blue-700 px-5 py-2 rounded shadow text-sm font-semibold transition">
+        Login / Sign up
+    </button>
+</div>
+
+        </div>
+    </nav>
+
+<main class="flex-grow">
+
+<!-- ================== HOME ================== -->
+        <section id="home" class="page active">
+            <div class="bg-blue-50 py-16 border-b border-blue-100 text-center px-4">
+                <h1 class="text-4xl md:text-5xl font-extrabold text-blue-900 mb-6 max-w-5xl mx-auto">OFED: Ozone-depleting Substances & Fluorinated Gases Emissions Database</h1>
+                <p class="text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
+                    The OFED platform provides authoritative and transparent emissions data for ozone-depleting substances (ODS) and fluorinated greenhouse gases (F-gases). 
+                    These compounds represent a dual challenge: they threaten the recovery of the stratospheric ozone layer and are potent drivers of climate change.
+                </p>
+            </div>
+
+            <div class="container mx-auto px-4 py-16">
+                <div class="grid md:grid-cols-2 gap-12 mb-16">
+                    <div class="bg-white p-8 rounded-xl border-l-4 border-blue-600 shadow-sm">
+                        <h2 class="text-2xl font-bold text-blue-900 mb-4">The Montreal Protocol</h2>
+                        <p class="text-gray-600">Successfully phased out most ODS, safeguarding the stratospheric ozone layer for future generations.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-xl border-l-4 border-green-600 shadow-sm">
+                        <h2 class="text-2xl font-bold text-green-900 mb-4">UN Climate Change Conventions</h2>
+                        <p class="text-gray-600">Mandate the reduction of all greenhouse gases, including many F-gases and remaining ODS, to mitigate global warming.</p>
+                    </div>
+                </div>
+
+                <div class="prose max-w-none text-gray-700 space-y-6">
+                    <p>Accurate quantification of emissions is essential. It transforms invisible releases into actionable insights, enabling scientists and policymakers to track progress, identify sources, verify compliance, and forecast environmental outcomes.</p>
+                    <p>OFED serves as a vital bridge between scientific measurement, effective policy, and planetary health. We consolidate disparate data—from atmospheric observations to industrial reporting—into a trusted, open-access resource to support a sustainable future.</p>
+                    <div class="text-center pt-8">
+                        <span class="text-2xl font-serif italic text-blue-800">"Data for Action. Science for Protection."</span>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8 mt-16">
+                    <div class="method-box bg-white p-8 rounded-2xl shadow-sm border border-gray-100 cursor-pointer" onclick="showPage('inventory')">
+                        <span class="text-blue-600 font-bold uppercase tracking-widest text-sm">Explore Results</span>
+                        <h3 class="text-2xl font-bold mt-2 mb-4">Bottom-up Inventory Method</h3>
+                        <p class="text-gray-500 mb-4">Detailed accounting based on activity data and emission factors across industrial sectors.</p>
+                        <span class="text-blue-600 font-semibold inline-flex items-center">View Database &rarr;</span>
+                    </div>
+                    <div class="method-box bg-white p-8 rounded-2xl shadow-sm border border-gray-100 cursor-pointer" onclick="showPage('inversion')">
+                        <span class="text-green-600 font-bold uppercase tracking-widest text-sm">Explore Results</span>
+                        <h3 class="text-2xl font-bold mt-2 mb-4">Top-down Inversion Method</h3>
+                        <p class="text-gray-500 mb-4">Independent assessment based on global atmospheric observations and transport models.</p>
+                        <span class="text-green-600 font-semibold inline-flex items-center">View Database &rarr;</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+<section id="inventory" class="page container mx-auto px-4 py-12">
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 mb-8">
+            <div class="flex justify-between items-end mb-6 border-b pb-4">
+                <div>
+                    <h2 class="text-2xl font-bold text-blue-900">Inventory Emission Visualization</h2>
+                    <p class="text-gray-500 text-sm">Visualize trends and download raw activity data.</p>
+                </div>
+                <button onclick="handleDownload()" class="flex items-center space-x-2 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition">
+                    <span>Download Excel</span>
+                </button>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-4 mb-8">
+                <div>
+                    <label class="block text-xs font-bold text-gray-400 uppercase mb-1">Substance</label>
+                    <select id="substance-select" onchange="updateInventoryChart('line')" class="w-full border rounded-lg p-2 text-sm focus:ring-2 focus:ring-blue-500">
+                            <option>CFC-11</option><option>CFC-12</option><option>HCFC-22</option>
+                            <option>HCFC-141b</option><option>HCFC-142b</option><option>HFC-134a</option>
+                            <option>HFC-143a</option><option>HFC-32</option><option>HFC-125</option><option>HFC-152a</option>
+                    </select>
+                </div>
+                <div><label class="block text-xs font-bold text-gray-400 uppercase mb-1">Start Year</label><select id="start-year" class="w-full border rounded-lg p-2 text-sm"></select></div>
+                <div><label class="block text-xs font-bold text-gray-400 uppercase mb-1">End Year</label><select id="end-year" class="w-full border rounded-lg p-2 text-sm"></select></div>
+                <div><label class="block text-xs font-bold text-gray-400 uppercase mb-1">Region</label>
+                    <select id="region-select" class="w-full border rounded-lg p-2 text-sm">
+                        <option>China</option><option>USA</option><option>EU-27</option><option>India</option><option>Japan</option><option>Global</option>
+                    </select>
+                </div>
+                <div class="flex items-end space-x-2">
+                    <button onclick="updateInventoryChart('line')" class="flex-1 bg-blue-900 text-white text-xs font-bold py-2.5 rounded hover:bg-black transition uppercase">Total (Line)</button>
+                    <button onclick="updateInventoryChart('bar')" class="flex-1 bg-gray-200 text-gray-800 text-xs font-bold py-2.5 rounded hover:bg-gray-300 transition uppercase">Sector (Bar)</button>
+                </div>
+            </div>
+            <div id="inventory-chart" class="w-full h-[500px]"></div>
+        </div>
+
+<div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 mb-8">
+                <h3 class="text-2xl font-bold text-gray-900 mb-4 border-l-4 border-blue-600 pl-4">Bottom-up Inventory Method</h3>
+                <p class="text-gray-600 leading-relaxed italic">
+                    The bottom-up inventory method is an accounting approach based on detailed activity data and emission factors. It systematically collects activity-level information (such as production output, consumption volume, and equipment stocks) from various emission sources (e.g., industrial processes, equipment operation, product use, and disposal). This data is then multiplied by scientifically determined specific emission factors to calculate the total emissions for a region or country through aggregation. As the cornerstone for compiling national greenhouse gas inventories and international compliance reports, it clearly reveals the emission contributions of different economic sectors, providing a direct basis for formulating source-level control strategies.
+                </p>
+            </div>
+
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+                <h3 class="text-xl font-bold text-gray-900 mb-6">Relevant Publications</h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm border-collapse">
+                        <thead>
+                            <tr class="bg-gray-50 border-b">
+                                <th class="p-4 font-bold">Substance</th><th class="p-4 font-bold">Year Range</th><th class="p-4 font-bold">Region</th><th class="p-4 font-bold">Reference</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y">
+                            <tr><td class="p-4">CFC-11</td><td class="p-4">1980-2024</td><td class="p-4">China</td><td class="p-4 text-blue-600 underline">Research Group et al. (2024), Nature Communications</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+<section id="inversion" class="page container mx-auto px-4 py-12">
+        <div class="bg-white p-6 rounded-xl shadow mb-10">
+            <div class="flex justify-between mb-4 border-b pb-3">
+                <div>
+                    <h2 class="text-2xl font-bold text-green-900">Inversion Emission</h2>
+                    <p class="text-sm text-gray-500">Top-down estimations with uncertainty ranges (Mean ± SD)</p>
+                </div>
+                <button onclick="handleInversionDownload()" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition">
+                    Download Excel
+                </button>
+            </div>
+
+            <div class="grid md:grid-cols-5 gap-4 mb-6">
+                <div>
+                    <label class="block text-xs font-bold text-gray-400 uppercase mb-1">Substance</label>
+                    <select id="inv-substance" class="w-full border p-2 rounded text-sm">
+                            <option>HCFC-22</option>
+                            <option>HCFC-141b</option><option>HCFC-142b</option><option>CFC-11</option><option>CFC-12</option><option>HFC-134a</option>
+                            <option>HFC-143a</option><option>HFC-32</option><option>HFC-125</option><option>HFC-152a</option>
+                    </select>
+                </div>
+                <div><label class="block text-xs font-bold text-gray-400 uppercase mb-1">Start Year</label><select id="inv-start-year" class="w-full border p-2 rounded text-sm"></select></div>
+                <div><label class="block text-xs font-bold text-gray-400 uppercase mb-1">End Year</label><select id="inv-end-year" class="w-full border p-2 rounded text-sm"></select></div>
+                <div><label class="block text-xs font-bold text-gray-400 uppercase mb-1">Region</label>
+                    <select id="inv-country" class="w-full border p-2 rounded text-sm">
+                        <option>China</option><option>USA</option><option>EU-27</option><option>India</option><option>Japan</option><option>Global</option>
+                    </select>
+                </div>
+                <div class="flex items-end">
+                    <button onclick="renderInversionChart()" class="w-full bg-green-700 text-white font-bold py-2 rounded hover:bg-green-800 transition uppercase text-xs h-[38px]">
+                        Update Chart
+                    </button>
+                </div>
+            </div>
+
+            <div id="inversion-chart" class="w-full h-[520px]"></div>
+        </div>
+
+<div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 mb-8">
+                <h3 class="text-2xl font-bold text-gray-900 mb-4 border-l-4 border-green-600 pl-4">Methodology: Top-down Inversion</h3>
+                <p class="text-gray-600 leading-relaxed italic">
+                    The top-down inversion method is an independent assessment method based on atmospheric observations. It involves directly measuring the concentrations of target gases in the atmosphere via ground-based stations, satellites, and other platforms. These measurements are then used in conjunction with atmospheric transport models for inverse simulation, tracing back and estimating the emission fluxes from upwind areas.
+                </p>
+            </div>
+
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+                <h3 class="text-xl font-bold text-gray-900 mb-6">Relevant Publications</h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm border-collapse">
+                        <thead>
+                            <tr class="bg-gray-50 border-b">
+                                <th class="p-4 font-bold">Substance</th><th class="p-4 font-bold">Year Range</th><th class="p-4 font-bold">Region</th><th class="p-4 font-bold">Reference</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y">
+                            <tr><td class="p-4">CFC-11</td><td class="p-4">1980-2024</td><td class="p-4">China</td><td class="p-4 text-blue-600 underline">Research Group et al. (2024), Nature Communications</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+
+<section id="comparison" class="page container mx-auto px-4 py-12">
+    <div class="bg-white p-6 rounded-xl shadow mb-10">
+        <div class="flex justify-between mb-4 border-b pb-3">
+            <div>
+                <h2 class="text-2xl font-bold text-indigo-900">OFED & Other Datasets</h2>
+                <p class="text-sm text-gray-500">Comparison of Bottom-up inventories and Top-down (Inverse Modeling & ISC) estimates.</p>
+            </div>
+            <button onclick="alert('Downloading Comparison Data...')" class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 transition">
+                Download Data
+            </button>
+        </div>
+
+        <div class="grid md:grid-cols-5 gap-4 mb-6">
+            <div>
+                <label class="block text-xs font-bold text-gray-400 uppercase mb-1">Region</label>
+                <select id="comp-region" class="w-full border p-2 rounded text-sm">
+                    <option>China</option><option>USA</option><option>EU-27</option><option>India</option><option>Japan</option><option>Global</option>
+                    </select>
+            </div>
+            <div>
+                <label class="block text-xs font-bold text-gray-400 uppercase mb-1">Substance</label>
+                <select id="comp-substance" class="w-full border p-2 rounded text-sm">
+                            <option>HCFC-22</option><option>HCFC-141b</option><option>HCFC-142b</option><option>CFC-11</option><option>CFC-12</option><option>HFC-134a</option>
+                            <option>HFC-143a</option><option>HFC-32</option><option>HFC-125</option><option>HFC-152a</option>
+                </select>
+            </div>
+            <div><label class="block text-xs font-bold text-gray-400 uppercase mb-1">Start Year</label><select id="comp-start-year" class="w-full border p-2 rounded text-sm"></select></div>
+            <div><label class="block text-xs font-bold text-gray-400 uppercase mb-1">End Year</label><select id="comp-end-year" class="w-full border p-2 rounded text-sm"></select></div>
+            <div class="flex items-end">
+                <button onclick="renderComparisonChart()" class="w-full bg-indigo-700 text-white font-bold py-2 rounded hover:bg-indigo-800 transition uppercase text-xs h-[38px]">
+                    Update Comparison
+                </button>
+            </div>
+        </div>
+
+        <div id="comparison-chart" class="w-full h-[600px]"></div>
+    </div>
+
+    <div class="bg-white p-8 rounded-xl shadow border border-gray-100">
+        <h3 class="text-xl font-bold text-gray-900 mb-6 border-l-4 border-indigo-600 pl-4">Publications & Data Sources</h3>
+        <div class="overflow-x-auto">
+            <table class="min-w-full text-sm text-left text-gray-500">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                    <tr>
+                        <th class="px-6 py-3">Study / Reference</th>
+                        <th class="px-6 py-3">Methodology</th>
+                        <th class="px-6 py-3">Type</th>
+                        <th class="px-6 py-3">Data Coverage</th>
+                    </tr>
+                </thead>
+                <tbody id="comp-table-body">
+                    </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+
+<section id="about" class="page">
+    <div class="bg-blue-50 py-12 border-b border-blue-100 text-center px-4 mb-8">
+        <h1 class="text-3xl md:text-4xl font-extrabold text-blue-900 mb-4">Meet the Team</h1>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+            A professional team dedicated to the research of fluorinated greenhouse gas emissions.
+        </p>
+    </div>
+
+    <div class="container mx-auto px-4 pb-12 max-w-6xl">
+        
+        <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 mb-12">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4 border-l-4 border-blue-600 pl-4">Team Introduction</h2>
+            <div class="text-gray-600 space-y-4 leading-relaxed">
+                <p>
+                    Our research team is affiliated with the <strong>Climate Change Research Center</strong> of the School of Environmental Science and Engineering. We are dedicated to the compilation of fluorinated greenhouse gas (F-gas) emission inventories, analysis of emission characteristics, and research on mitigation policies. The team consists of experts and scholars in environmental science, atmospheric chemistry, and data science, maintaining long-term cooperative relationships with domestic and international research institutions.
+                </p>
+                <p>
+                    Relying on national research platforms and integrating multi-source data, we have established a comprehensive OFED database. We focus on integrating key research findings, such as HCFC-22 emissions in China, providing crucial data support and decision-making references for national climate change negotiations, environmental policy formulation, and corporate emission reduction actions.
+                </p>
+            </div>
+        </div>
+
+        <div class="mb-12">
+            <h2 class="text-2xl font-bold text-center text-gray-900 mb-8">Core Members</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 text-center hover:shadow-md transition duration-300">
+                    <div class="w-24 h-24 bg-blue-100 rounded-full mx-auto mb-6 flex items-center justify-center text-blue-600 text-3xl font-bold">
+                        L
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-1">Prof. Ming Li</h3>
+                    <p class="text-blue-600 font-medium mb-4">Team Leader / PhD Supervisor</p>
+                    <div class="text-sm text-gray-500 space-y-2">
+                        <p><strong>Focus:</strong> GHG Accounting, Climate Policy</p>
+                        <p class="text-blue-500">liming@university.edu.cn</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 text-center hover:shadow-md transition duration-300">
+                    <div class="w-24 h-24 bg-green-100 rounded-full mx-auto mb-6 flex items-center justify-center text-green-600 text-3xl font-bold">
+                        W
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-1">Assoc. Prof. Hua Wang</h3>
+                    <p class="text-green-600 font-medium mb-4">Head of Data Science</p>
+                    <div class="text-sm text-gray-500 space-y-2">
+                        <p><strong>Focus:</strong> Environmental Big Data, Modeling</p>
+                        <p class="text-blue-500">wanghua@university.edu.cn</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 text-center hover:shadow-md transition duration-300">
+                    <div class="w-24 h-24 bg-indigo-100 rounded-full mx-auto mb-6 flex items-center justify-center text-indigo-600 text-3xl font-bold">
+                        Z
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-1">Dr. Wei Zhang</h3>
+                    <p class="text-indigo-600 font-medium mb-4">Senior Researcher</p>
+                    <div class="text-sm text-gray-500 space-y-2">
+                        <p><strong>Focus:</strong> Atmospheric Chemistry, Emissions</p>
+                        <p class="text-blue-500">zhangwei@university.edu.cn</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6 border-l-4 border-indigo-600 pl-4">Partner Institutions</h2>
+            <div class="grid md:grid-cols-2 gap-8 text-sm text-gray-700">
+                <div>
+                    <h4 class="font-bold text-gray-900 mb-3 uppercase tracking-wide text-xs">Domestic Partners</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-center"><span class="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>Chinese Research Academy of Environmental Sciences (CRAES)</li>
+                        <li class="flex items-center"><span class="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>Institute of Atmospheric Physics, CAS (IAP)</li>
+                        <li class="flex items-center"><span class="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>Chinese Academy of Environmental Planning (CAEP)</li>
+                        <li class="flex items-center"><span class="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>School of Environment, Tsinghua University</li>
+                        <li class="flex items-center"><span class="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>College of Environmental Sciences, Peking University</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-gray-900 mb-3 uppercase tracking-wide text-xs">International Partners</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-center"><span class="w-2 h-2 bg-green-500 rounded-full mr-3"></span>United Nations Environment Programme (UNEP)</li>
+                        <li class="flex items-center"><span class="w-2 h-2 bg-green-500 rounded-full mr-3"></span>World Meteorological Organization (WMO)</li>
+                        <li class="flex items-center"><span class="w-2 h-2 bg-green-500 rounded-full mr-3"></span>International Energy Agency (IEA)</li>
+                        <li class="flex items-center"><span class="w-2 h-2 bg-green-500 rounded-full mr-3"></span>U.S. Environmental Protection Agency (EPA)</li>
+                        <li class="flex items-center"><span class="w-2 h-2 bg-green-500 rounded-full mr-3"></span>European Commission Joint Research Centre (JRC)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Auth Modal -->
+<div id="auth-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50">
+  <div class="bg-white w-full max-w-md rounded-xl p-6">
+    <h2 class="text-xl font-bold mb-4" id="auth-title">Login</h2>
+
+    <!-- Register fields -->
+    <div id="register-fields" class="space-y-2 hidden">
+      <input id="reg-name" class="w-full border p-2 rounded" placeholder="Full Name">
+      <input id="reg-country" class="w-full border p-2 rounded" placeholder="Country">
+      <input id="reg-org1" class="w-full border p-2 rounded" placeholder="Primary Organization">
+      <input id="reg-org2" class="w-full border p-2 rounded" placeholder="Secondary Organization">
+    </div>
+
+    <input id="auth-email" class="w-full border p-2 rounded mt-2" placeholder="Email">
+
+    <div class="flex justify-between mt-4">
+      <button onclick="submitAuth()" class="bg-blue-600 text-white px-4 py-2 rounded">
+        Submit
+      </button>
+      <button onclick="toggleAuthMode()" class="text-blue-600 text-sm">
+        Switch to Register
+      </button>
+    </div>
+
+    <button onclick="closeAuthModal()" class="text-gray-400 text-xs mt-3">Cancel</button>
+  </div>
+</div>
+
+
+</main>
+
+    <footer class="bg-gray-900 text-gray-400 py-12 border-t border-gray-800">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-white mb-2">Ozone-depleting Substances & Fluorinated gases Emissions Database (OFED)</p>
+            <p class="text-sm">If there are any omissions or errors, please inform us by email: <a href="mailto:contact@ofed.com" class="text-blue-400 underline">contact@ofed.com</a></p>
+            <p class="mt-6 text-xs text-gray-600 tracking-widest uppercase italic">www.ofed.com</p>
+        </div>
+    </footer>
+
+<script>
+
+let inventoryData = [];
+let inversionData = [];
+let comparisonData = [];
+
+async function loadCSV(path) {
+    const res = await fetch(path);
+    const text = await res.text();
+    return Papa.parse(text, { header: true, dynamicTyping: true }).data;
+}
+
+async function loadAllData() {
+    inventoryData  = await loadCSV("inventory.csv");
+    inversionData  = await loadCSV("inversion.csv");
+    comparisonData = await loadCSV("comparison.csv");
+}
+
+
+    /* ===== 全局变量与工具 ===== */
+    const years = Array.from({length: 45}, (_, i) => 1980 + i); // 1980 - 2024
+    let isLoggedIn = false;
+    let currentInvChartType = 'line';
+
+    // 页面切换逻辑
+function showPage(pageId) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById(pageId).classList.add('active');
+
+    // 更新导航状态
+   
+// 更新导航状态
+document.querySelectorAll('.nav-link').forEach(n => n.classList.remove('active')); // 先移除所有
+if(pageId === 'home') document.getElementById('nav-home')?.classList.add('active');
+if(pageId === 'inventory') document.getElementById('nav-inventory')?.classList.add('active'); // 建议补全
+if(pageId === 'inversion') document.getElementById('nav-inversion')?.classList.add('active'); // 建议补全
+if(pageId === 'comparison') document.getElementById('nav-comparison')?.classList.add('active'); 
+if(pageId === 'about') document.getElementById('nav-about')?.classList.add('active'); // 新增这行
+
+    window.scrollTo(0, 0);
+
+    setTimeout(() => {
+        if(pageId === 'inventory') updateInventoryChart(currentInvChartType);
+        if(pageId === 'inversion') renderInversionChart();
+        if(pageId === 'comparison') renderComparisonChart(); // 新增
+    }, 100);
+}
+
+ function handleDownload() {
+  if (!isLoggedIn) {
+    alert("Please login to download data.");
+    openAuthModal();
+    return;
+  }
+  window.location.href = "/api/download/inventory";
+}
+
+function handleInversionDownload() {
+    if (!isLoggedIn) {
+        alert("Please login to download inversion emission data.");
+        openAuthModal();   // 打开登录 / 注册窗口
+        return;
+    }
+
+    // 已登录，执行真实下载
+    window.location.href = "/api/download/inversion";
+}
+
+    /* ===== Inventory Data & Logic ===== */
+
+
+    function initSelects() {
+        const s = document.getElementById('start-year');
+        const e = document.getElementById('end-year');
+        years.forEach(y => {
+            s.add(new Option(y, y));
+            e.add(new Option(y, y));
+        });
+        s.value = 1980;
+        e.value = 2024;
+    }
+
+function updateInventoryChart(type) {
+
+    const substance = document.getElementById('substance-select').value;
+    const region    = document.getElementById('region-select').value;
+    const sYear     = parseInt(document.getElementById('start-year').value);
+    const eYear     = parseInt(document.getElementById('end-year').value);
+
+    if (sYear > eYear) {
+        alert("Start year cannot be greater than end year");
+        return;
+    }
+
+    const filtered = inventoryData.filter(d =>
+        d.substance === substance &&
+        d.region === region &&
+        d.year >= sYear &&
+        d.year <= eYear
+    );
+
+    if (filtered.length === 0) {
+        alert("No inventory data available");
+        return;
+    }
+
+    const years = [...new Set(filtered.map(d => d.year))].sort((a, b) => a - b);
+
+    const chartDom = document.getElementById('inventory-chart');
+    const oldChart = echarts.getInstanceByDom(chartDom);
+    if (oldChart) oldChart.dispose();
+    const chart = echarts.init(chartDom);
+
+    let option = {};
+
+    /* ===== 折线图：Total ===== */
+    if (type === "line") {
+
+        const totalData = years.map(y => {
+            const row = filtered.find(d => d.year === y && d.sector === "Total");
+            return row ? row.value : 0;
+        });
+
+        option = {
+            title: { text: `${substance} Inventory Emissions (${region})`, left: "center" },
+            tooltip: { trigger: "axis" },
+            xAxis: { type: "category", data: years },
+            yAxis: { type: "value", name: "Gg yr⁻¹" },
+            series: [{
+                name: "Total",
+                type: "line",
+                smooth: true,
+                data: totalData,
+                symbolSize: 6,
+                areaStyle: {}
+            }]
+        };
+    }
+
+    /* ===== 柱状图：Sector ===== */
+    if (type === "bar") {
+
+        const sectors = [...new Set(
+            filtered.map(d => d.sector).filter(s => s !== "Total")
+        )];
+
+        const series = sectors.map(sec => ({
+            name: sec,
+            type: "bar",
+            stack: "total",
+            emphasis: { focus: "series" },
+            data: years.map(y => {
+                const row = filtered.find(d => d.year === y && d.sector === sec);
+                return row ? row.value : 0;
+            })
+        }));
+
+        option = {
+            title: { text: `${substance} Sectoral Breakdown (${region})`, left: "center" },
+            tooltip: { trigger: "axis", axisPointer: { type: "shadow" } },
+            legend: { bottom: 0 },
+            xAxis: { type: "category", data: years },
+            yAxis: { type: "value", name: "Gg yr⁻¹" },
+            series: series
+        };
+    }
+
+    chart.setOption(option);
+}
+
+
+    /* ===== Inversion Data & Logic ===== */
+
+
+    // 修复：添加初始化反演选择框的函数
+    function initInversionSelect() {
+        const s = document.getElementById('inv-start-year');
+        const e = document.getElementById('inv-end-year');
+        // 反演数据年份范围通常较短，这里生成 1980-2024
+        const invYears = Array.from({length: 45}, (_, i) => 1980 + i);
+        
+        s.innerHTML = ''; e.innerHTML = ''; // 清空旧选项
+
+        invYears.forEach(y => {
+            s.add(new Option(y, y));
+            e.add(new Option(y, y));
+        });
+        s.value = 1980;
+        e.value = 2024;
+    }
+
+function renderInversionChart() {
+
+    const substance = document.getElementById("inv-substance").value;
+    const region    = document.getElementById("inv-country").value;
+    const sYear     = parseInt(document.getElementById("inv-start-year").value);
+    const eYear     = parseInt(document.getElementById("inv-end-year").value);
+
+    if (sYear > eYear) {
+        alert("Start year cannot be greater than end year");
+        return;
+    }
+
+    const filtered = inversionData.filter(d =>
+        d.substance === substance &&
+        d.region === region &&
+        d.year >= sYear &&
+        d.year <= eYear
+    );
+
+    if (filtered.length === 0) {
+        alert("No inversion data available");
+        return;
+    }
+
+    const years = [...new Set(filtered.map(d => d.year))].sort();
+    const studies = [...new Set(filtered.map(d => d.study))];
+
+    const chartDom = document.getElementById("inversion-chart");
+    const oldChart = echarts.getInstanceByDom(chartDom);
+    if (oldChart) oldChart.dispose();
+    const chart = echarts.init(chartDom);
+
+    let series = [];
+    let allValues = [];
+
+    studies.forEach(study => {
+
+        const rows = filtered.filter(d => d.study === study);
+
+        const lineData = [];
+        const errorData = [];
+
+        years.forEach(y => {
+            const r = rows.find(d => d.year === y);
+            if (r) {
+                lineData.push([y, r.mean]);
+                if (r.sd !== null && r.sd !== undefined) {
+                    errorData.push([y, r.mean - r.sd, r.mean + r.sd]);
+                    allValues.push(r.mean - r.sd, r.mean + r.sd);
+                } else {
+                    allValues.push(r.mean);
+                }
+            }
+        });
+
+        series.push({
+            name: study,
+            type: "line",
+            data: lineData,
+            symbol: "circle",
+            symbolSize: 8
+        });
+
+        if (errorData.length > 0) {
+            series.push({
+                type: "custom",
+                name: study + " error",
+                renderItem: function (params, api) {
+                    const x = api.coord([api.value(0), api.value(2)]);
+                    const y = api.coord([api.value(0), api.value(1)]);
+                    const half = 4;
+                    return {
+                        type: "group",
+                        children: [
+                            { type: "line", shape: { x1: x[0], y1: x[1], x2: y[0], y2: y[1] } },
+                            { type: "line", shape: { x1: x[0]-half, y1: x[1], x2: x[0]+half, y2: x[1] } },
+                            { type: "line", shape: { x1: y[0]-half, y1: y[1], x2: y[0]+half, y2: y[1] } }
+                        ]
+                    };
+                },
+                data: errorData,
+                tooltip: { show: false }
+            });
+        }
+    });
+
+    const ymin = Math.max(0, Math.min(...allValues) * 0.85);
+    const ymax = Math.max(...allValues) * 1.15;
+
+    chart.setOption({
+        title: { text: `${substance} Inversion Emissions (${region})`, left: "center" },
+        tooltip: { trigger: "axis" },
+        legend: { bottom: 0 },
+        xAxis: { type: "category", data: years },
+        yAxis: { type: "value", name: "Gg yr⁻¹", min: ymin, max: ymax },
+        series: series
+    });
+}
+
+
+
+/* ===== Comparison (OFED & Others) Data & Logic ===== */
+
+// 1. 数据集定义
+
+
+// 2. 初始化年份选择框
+function initComparisonSelect() {
+    const s = document.getElementById('comp-start-year');
+    const e = document.getElementById('comp-end-year');
+    // 使用数据集中定义的 labels 范围，或者宽泛一点
+    const compYears = Array.from({length: 45}, (_, i) => 1980 + i); // 2005 - 2025
+    
+    s.innerHTML = ''; e.innerHTML = '';
+    compYears.forEach(y => {
+        s.add(new Option(y, y));
+        e.add(new Option(y, y));
+    });
+    s.value = 1980;
+    e.value = 2024;
+}
+
+// 3. 生成颜色 (为了区分多个研究)
+const compColors = [
+    '#e60049', '#0bb4ff', '#50e991', '#e6d800', '#9b19f5', '#ffa300', '#dc0ab4', '#b3d4ff', '#00bfa0',
+    '#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b', '#e377c2', '#7f7f7f', '#bcbd22'
+];
+
+function renderComparisonChart() {
+
+    const substance = document.getElementById("comp-substance").value;
+    const region    = document.getElementById("comp-region").value;
+    const sYear     = parseInt(document.getElementById("comp-start-year").value);
+    const eYear     = parseInt(document.getElementById("comp-end-year").value);
+
+    if (sYear > eYear) {
+        alert("Start year cannot be greater than end year");
+        return;
+    }
+
+    const filtered = comparisonData.filter(d =>
+        d.substance === substance &&
+        d.region === region &&
+        d.year >= sYear &&
+        d.year <= eYear
+    );
+
+    if (filtered.length === 0) {
+        alert("No comparison data available");
+        return;
+    }
+
+    const years = [...new Set(filtered.map(d => d.year))].sort();
+    const datasets = [...new Set(filtered.map(d => d.dataset))];
+
+    const chartDom = document.getElementById("comparison-chart");
+    const oldChart = echarts.getInstanceByDom(chartDom);
+    if (oldChart) oldChart.dispose();
+    const chart = echarts.init(chartDom);
+
+    let series = [];
+    let tableHTML = "";
+
+    datasets.forEach(name => {
+
+        const rows = filtered.filter(d => d.dataset === name);
+
+        const data = years.map(y => {
+            const r = rows.find(d => d.year === y);
+            return r ? r.value : null;
+        });
+
+        const method = rows[0]?.method || "Unknown";
+
+        series.push({
+            name: name,
+            type: "line",
+            data: data,
+            symbol: method === "Bottom-up" ? "circle" : "emptyCircle",
+            symbolSize: 7
+        });
+
+        tableHTML += `
+        <tr>
+            <td class="px-4 py-2">${name}</td>
+            <td class="px-4 py-2">${method}</td>
+            <td class="px-4 py-2">${sYear}-${eYear}</td>
+        </tr>`;
+    });
+
+    document.getElementById("comp-table-body").innerHTML = tableHTML;
+
+    chart.setOption({
+        title: { text: `${substance} Emission Comparison (${region})`, left: "center" },
+        tooltip: { trigger: "axis" },
+        legend: { bottom: 0 },
+        xAxis: { type: "category", data: years },
+        yAxis: { type: "value", name: "Gg yr⁻¹" },
+        series: series
+    });
+}
+
+
+
+    /* ===== 初始化 ===== */
+window.addEventListener("load", async () => {
+
+    /* ===== 原有多页初始化（必须保留） ===== */
+    initNavigation();
+    showPage("home");   // 或你原来默认页
+
+    /* ===== Excel 数据加载 ===== */
+    await loadExcelData();
+
+    /* ===== 初始化各页面图表 ===== */
+    updateInventoryChart("line");
+    renderInversionChart();
+    renderComparisonChart();
+});
+
+        
+// 监听窗口大小改变
+    window.onresize = function() {
+        const chart1 = echarts.getInstanceByDom(document.getElementById('inventory-chart'));
+        if(chart1) chart1.resize();
+        const chart2 = echarts.getInstanceByDom(document.getElementById('inversion-chart'));
+        if(chart2) chart2.resize();
+        const chart3 = echarts.getInstanceByDom(document.getElementById('comparison-chart')); // 新增
+        if(chart3) chart3.resize();
+    };
+
+let authMode = 'login'; // login | register
+
+function openAuthModal() {
+  document.getElementById('auth-modal').classList.remove('hidden');
+}
+
+function closeAuthModal() {
+  document.getElementById('auth-modal').classList.add('hidden');
+}
+
+function toggleAuthMode() {
+  authMode = authMode === 'login' ? 'register' : 'login';
+  document.getElementById('register-fields').classList.toggle('hidden');
+  document.getElementById('auth-title').innerText =
+    authMode === 'login' ? 'Login' : 'Register';
+}
+
+async function submitAuth() {
+  const email = document.getElementById('auth-email').value;
+
+  if (authMode === 'register') {
+    const payload = {
+      name: document.getElementById('reg-name').value,
+      country: document.getElementById('reg-country').value,
+      org1: document.getElementById('reg-org1').value,
+      org2: document.getElementById('reg-org2').value,
+      email
+    };
+
+    const res = await fetch('/api/register', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+
+    alert("Activation email sent. Please check your inbox.");
+  } else {
+    const res = await fetch('/api/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email })
+    });
+
+    if (res.ok) {
+      isLoggedIn = true;
+      updateUserUI(email);
+      closeAuthModal();
+    } else {
+      alert("Login failed");
+    }
+  }
+}
+
+function updateUserUI(email) {
+  document.getElementById('user-status').innerHTML =
+    `<span class="text-sm">Welcome, ${email}</span>`;
+}
+
+
+</script>
+
+</body>
+</html>
