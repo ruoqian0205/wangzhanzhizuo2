@@ -485,85 +485,99 @@
     // 6. Chart Logic - Inversion
 function renderInversionChart() {
 
-    const chartDom = document.getElementById("inversion-chart");
-    const substance = document.getElementById("inv-substance").value;
-    const region = document.getElementById("inv-country").value;
-    const sYear = parseInt(document.getElementById("inv-start-year").value);
-    const eYear = parseInt(document.getElementById("inv-end-year").value);
+    var chartDom = document.getElementById("inversion-chart");
+    if (!chartDom) return;
+
+    var substance = document.getElementById("inv-substance").value;
+    var region = document.getElementById("inv-country").value;
+    var sYear = parseInt(document.getElementById("inv-start-year").value);
+    var eYear = parseInt(document.getElementById("inv-end-year").value);
 
     if (sYear > eYear) {
         alert("Start year cannot be greater than end year");
         return;
     }
 
-    const filtered = inversionData.filter(d =>
-        d.substance === substance &&
-        d.region === region &&
-        d.year >= sYear &&
-        d.year <= eYear
-    );
+    var filtered = inversionData.filter(function (d) {
+        return d.substance === substance &&
+               d.region === region &&
+               d.year >= sYear &&
+               d.year <= eYear;
+    });
 
-    const oldChart = echarts.getInstanceByDom(chartDom);
+    var oldChart = echarts.getInstanceByDom(chartDom);
     if (oldChart) oldChart.dispose();
-    const chart = echarts.init(chartDom);
+    var chart = echarts.init(chartDom);
 
     if (filtered.length === 0) {
         chart.clear();
-        console.warn("No inversion data available.");
         return;
     }
 
-    const years = [...new Set(filtered.map(d => d.year))].sort((a, b) => a - b);
-    const studies = [...new Set(filtered.map(d => d.study))];
+    var years = [];
+    filtered.forEach(function (d) {
+        if (years.indexOf(d.year) === -1) years.push(d.year);
+    });
+    years.sort(function (a, b) { return a - b; });
 
-    let series = [];
-    let allValues = [];
+    var studies = [];
+    filtered.forEach(function (d) {
+        if (studies.indexOf(d.study) === -1) studies.push(d.study);
+    });
 
-    studies.forEach(study => {
+    var series = [];
+    var allValues = [];
 
-        const rows = filtered.filter(d => d.study === study);
+    studies.forEach(function (study) {
 
-        // ===== 关键修复：一维数组 =====
-        const lineData = [];
-        const errorData = [];
+        var rows = filtered.filter(function (d) {
+            return d.study === study;
+        });
 
-        years.forEach((y, idx) => {
-            const r = rows.find(d => d.year === y);
+        var lineData = [];
+        var errorData = [];
+
+        years.forEach(function (y, idx) {
+            var r = rows.find(function (d) {
+                return d.year === y;
+            });
+
             if (!r) {
                 lineData.push(null);
                 return;
             }
 
-            const val = r.mean ?? r.Mean;
-            const sd  = r.sd ?? r.SD ?? null;
+            // ✅ ES5 安全写法（关键修复）
+            var val = (r.mean !== undefined && r.mean !== null)
+                ? r.mean
+                : r.Mean;
+
+            var sd = (r.sd !== undefined && r.sd !== null)
+                ? r.sd
+                : r.SD;
 
             if (val !== undefined && val !== null) {
                 lineData.push(val);
                 allValues.push(val);
 
-                if (sd !== null && !isNaN(sd)) {
-                    const low = val - sd;
-                    const high = val + sd;
-                    errorData.push([idx, low, high]); // ⚠️ 用 index
-                    allValues.push(low, high);
+                if (sd !== undefined && sd !== null && !isNaN(sd)) {
+                    errorData.push([idx, val - sd, val + sd]);
+                    allValues.push(val - sd, val + sd);
                 }
             } else {
                 lineData.push(null);
             }
         });
 
-        // 折线
         series.push({
             name: study,
             type: "line",
             data: lineData,
             smooth: true,
             symbol: "circle",
-            symbolSize: 7,
-            lineStyle: { width: 2 }
+            symbolSize: 6
         });
 
-        // 误差棒
         if (errorData.length > 0) {
             series.push({
                 name: study + " error",
@@ -571,23 +585,23 @@ function renderInversionChart() {
                 tooltip: { show: false },
                 renderItem: function (params, api) {
 
-                    const xIndex = api.value(0);
-                    const low = api.coord([xIndex, api.value(1)]);
-                    const high = api.coord([xIndex, api.value(2)]);
-                    const half = 5;
+                    var x = api.value(0);
+                    var low = api.coord([x, api.value(1)]);
+                    var high = api.coord([x, api.value(2)]);
+                    var half = 4;
 
-                    const style = api.style({
+                    var style = api.style({
                         stroke: api.visual('color'),
-                        fill: null,
-                        lineWidth: 1.5
+                        lineWidth: 1.2,
+                        fill: null
                     });
 
                     return {
                         type: 'group',
                         children: [
-                            { type: 'line', shape: { x1: high[0], y1: high[1], x2: low[0], y2: low[1] }, style },
-                            { type: 'line', shape: { x1: high[0]-half, y1: high[1], x2: high[0]+half, y2: high[1] }, style },
-                            { type: 'line', shape: { x1: low[0]-half, y1: low[1], x2: low[0]+half, y2: low[1] }, style }
+                            { type: 'line', shape: { x1: high[0], y1: high[1], x2: low[0], y2: low[1] }, style: style },
+                            { type: 'line', shape: { x1: high[0]-half, y1: high[1], x2: high[0]+half, y2: high[1] }, style: style },
+                            { type: 'line', shape: { x1: low[0]-half, y1: low[1], x2: low[0]+half, y2: low[1] }, style: style }
                         ]
                     };
                 },
@@ -597,10 +611,39 @@ function renderInversionChart() {
         }
     });
 
-    // Y 轴范围
-    let yMin = 0, yMax = 100;
-    if (allValues.length) {
-        yMin = Math.max(0, Math.m
+    var yMin = 0, yMax = 100;
+    if (allValues.length > 0) {
+        yMin = Math.max(0, Math.min.apply(null, allValues) * 0.8);
+        yMax = Math.max.apply(null, allValues) * 1.1;
+    }
+
+    chart.setOption({
+        title: {
+            text: substance + " Inversion Emissions (" + region + ")",
+            left: "center"
+        },
+        tooltip: { trigger: "axis" },
+        legend: { bottom: 0 },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '12%',
+            containLabel: true
+        },
+        xAxis: {
+            type: "category",
+            data: years
+        },
+        yAxis: {
+            type: "value",
+            name: "Gg yr⁻¹",
+            min: yMin,
+            max: yMax
+        },
+        series: series
+    });
+}
+
 
 
     // 7. Chart Logic - Comparison
