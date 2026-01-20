@@ -25,9 +25,9 @@
             </div>
             <div class="hidden lg:flex space-x-6 text-sm uppercase tracking-wide">
                 <button onclick="showPage('home')" id="nav-home" class="nav-link py-2 hover:text-blue-300 transition">Database Introduction</button>
-                <button onclick="showPage('inventory')" id="nav-inventory" class="nav-link py-2 hover:text-blue-300 transition">Inventory Emission</button>
-                <button onclick="showPage('inversion')" id="nav-inversion" class="nav-link py-2 hover:text-blue-300 transition">Inversion Emission</button>
-                <button onclick="showPage('comparison')" id="nav-comparison" class="nav-link py-2 hover:text-blue-300 transition">OFED and Other datasets</button>
+                <button onclick="showPage('inventory')" id="nav-inventory" class="nav-link py-2 hover:text-blue-300 transition">Inventory Emissions</button>
+                <button onclick="showPage('inversion')" id="nav-inversion" class="nav-link py-2 hover:text-blue-300 transition">Inversion Emissions</button>
+                <button onclick="showPage('comparison')" id="nav-comparison" class="nav-link py-2 hover:text-blue-300 transition">OFED and Other Datasets</button>
                 <button onclick="showPage('about')" id="nav-about" class="nav-link py-2 hover:text-blue-300 transition">About Team</button>
             </div>
             <div id="user-status">
@@ -43,7 +43,7 @@
             <div class="bg-blue-50 py-16 border-b border-blue-100 text-center px-4">
                 <h1 class="text-4xl md:text-5xl font-extrabold text-blue-900 mb-6 max-w-5xl mx-auto">OFED: Ozone-depleting Substances & Fluorinated Gases Emissions Database</h1>
                 <p class="text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
-                    The OFED platform provides authoritative and transparent emissions data for ozone-depleting substances (ODS) and fluorinated greenhouse gases (F-gases). These compounds represent a dual challenge: they threaten the recovery of the stratospheric ozone layer and are potent drivers of climate change.
+                    The OFED platform provides authoritative and transparent emissions data for ozone-depleting substances (ODSs) and fluorinated gases (F-gases). These compounds represent a dual challenge: they threaten the recovery of the stratospheric ozone layer and are potent drivers of climate change.
                 </p>
             </div>
             <div class="container mx-auto px-4 py-16">
@@ -54,7 +54,7 @@
                     </div>
                     <div class="bg-white p-8 rounded-xl border-l-4 border-green-600 shadow-sm">
                         <h2 class="text-2xl font-bold text-green-900 mb-4">UN Climate Change Conventions</h2>
-                        <p class="text-gray-600">Mandate the reduction of all greenhouse gases, including many F-gases and remaining ODS, to mitigate global warming.</p>
+                        <p class="text-gray-600">Mandate the reduction of all greenhouse gases, including many F-gases, to mitigate global warming.</p>
                     </div>
                 </div>
                 <div class="prose max-w-none text-gray-700 space-y-6">
@@ -77,15 +77,15 @@
                 </div>
                 <div class="grid md:grid-cols-3 gap-8 mt-16"> <div class="method-box bg-white p-8 rounded-2xl shadow-sm border border-gray-100 cursor-pointer" onclick="showPage('inventory')">
         <span class="text-blue-600 font-bold uppercase tracking-widest text-sm">Explore Results</span>
-        <h3 class="text-2xl font-bold mt-2 mb-4">Bottom-up Inventory Method</h3>
-        <p class="text-gray-500 mb-4">Detailed accounting based on activity data and emission factors across industrial sectors.</p>
+        <h3 class="text-2xl font-bold mt-2 mb-4">Inventory Emissions</h3>
+        <p class="text-gray-500 mb-4">The bottom-up approach quantifies emissions using activity data (production and consumption) and emission factors.</p>
         <span class="text-blue-600 font-semibold inline-flex items-center">View Database &rarr;</span>
     </div>
 
     <div class="method-box bg-white p-8 rounded-2xl shadow-sm border border-gray-100 cursor-pointer" onclick="showPage('inversion')">
         <span class="text-green-600 font-bold uppercase tracking-widest text-sm">Explore Results</span>
-        <h3 class="text-2xl font-bold mt-2 mb-4">Top-down Inversion Method</h3>
-        <p class="text-gray-500 mb-4">Independent assessment based on global atmospheric observations and transport models.</p>
+        <h3 class="text-2xl font-bold mt-2 mb-4">Inversion Emissions</h3>
+        <p class="text-gray-500 mb-4">The top-down approach quantifies emissions using atmospheric observations, transport models, and inversion algorithms.</p>
         <span class="text-green-600 font-semibold inline-flex items-center">View Database &rarr;</span>
     </div>
 
@@ -99,106 +99,174 @@
             </div>
         </section>
 
-        <section id="inventory" class="page container mx-auto px-4 py-12">
-            <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 mb-8">
-                <div class="flex justify-between items-end mb-6 border-b pb-4">
-                    <div>
-                        <h2 class="text-2xl font-bold text-blue-900">Inventory Emission Visualization</h2>
-                        <p class="text-gray-500 text-sm">Visualize trends and download raw activity data.</p>
-                    </div>
-                    <button onclick="handleDownload('inventory.csv')" class="flex items-center space-x-2 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition">
-                        <span>Download Excel</span>
-                    </button>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-5 gap-4 mb-8">
-                    <div>
-                        <label class="block text-xs font-bold text-gray-400 uppercase mb-1">Substance</label>
-                        <select id="substance-select" class="w-full border rounded-lg p-2 text-sm focus:ring-2 focus:ring-blue-500">
-                            <option>CFC-11</option><option>CFC-12</option><option>HCFC-22</option>
-                            <option>HCFC-141b</option><option>HCFC-142b</option><option>HFC-134a</option>
-                            <option>HFC-143a</option><option>HFC-32</option><option>HFC-125</option><option>HFC-152a</option>
-                        </select>
-                    </div>
-                    <div><label class="block text-xs font-bold text-gray-400 uppercase mb-1">Start Year</label><select id="start-year" class="w-full border rounded-lg p-2 text-sm"></select></div>
-                    <div><label class="block text-xs font-bold text-gray-400 uppercase mb-1">End Year</label><select id="end-year" class="w-full border rounded-lg p-2 text-sm"></select></div>
-                    <div>
-                        <label class="block text-xs font-bold text-gray-400 uppercase mb-1">Region</label>
-                        <select id="region-select" class="w-full border rounded-lg p-2 text-sm">
-                            <option>China</option><option>USA</option><option>EU-27</option><option>India</option><option>Japan</option><option>Global</option>
-                        </select>
-                    </div>
-                    <div class="flex items-end space-x-2">
-                        <button onclick="updateInventoryChart('line')" class="flex-1 bg-blue-900 text-white text-xs font-bold py-2.5 rounded hover:bg-black transition uppercase">Total (Line)</button>
-                        <button onclick="updateInventoryChart('bar')" class="flex-1 bg-gray-200 text-gray-800 text-xs font-bold py-2.5 rounded hover:bg-gray-300 transition uppercase">Sector (Bar)</button>
-                    </div>
-                </div>
-                <div id="inventory-chart" class="w-full h-[500px]"></div>
+<section id="inventory" class="page container mx-auto px-4 py-12">
+    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 mb-8">
+        <div class="flex justify-between items-end mb-6 border-b pb-4">
+            <div>
+                <h2 class="text-2xl font-bold text-blue-900">Inventory Emissions Visualization</h2>
+                <p class="text-gray-500 text-sm">Provide both total emissions and sectoral breakdowns.</p>
             </div>
-            <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 mb-8">
-                <h3 class="text-2xl font-bold text-gray-900 mb-4 border-l-4 border-blue-600 pl-4">Bottom-up Inventory Method</h3>
-                <p class="text-gray-600 leading-relaxed italic">
-                    The bottom-up inventory method is an accounting approach based on detailed activity data and emission factors. It systematically collects activity-level information (such as production output, consumption volume, and equipment stocks) from various emission sources. This data is then multiplied by scientifically determined specific emission factors to calculate the total emissions.
-                </p>
-            </div>
-            <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
-                <h3 class="text-xl font-bold text-gray-900 mb-6">Relevant Publications</h3>
-                <div class="overflow-x-auto">
-                    <table class="w-full text-left text-sm border-collapse">
-                        <thead>
-                            <tr class="bg-gray-50 border-b">
-                                <th class="p-4 font-bold">Substance</th><th class="p-4 font-bold">Year Range</th><th class="p-4 font-bold">Region</th><th class="p-4 font-bold">Reference</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y">
-                            <tr><td class="p-4">CFC-11</td><td class="p-4">1980-2024</td><td class="p-4">China</td><td class="p-4 text-blue-600 underline">Research Group et al. (2024), Nature Communications</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </section>
+            <button onclick="handleDownload('inventory.csv')" class="flex items-center space-x-2 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition">
+                <span>Download Data</span>
+            </button>
+        </div>
 
-        <section id="inversion" class="page container mx-auto px-4 py-12">
-            <div class="bg-white p-6 rounded-xl shadow mb-10">
-                <div class="flex justify-between mb-4 border-b pb-3">
-                    <div>
-                        <h2 class="text-2xl font-bold text-green-900">Inversion Emission</h2>
-                        <p class="text-sm text-gray-500">Top-down estimations with uncertainty ranges (Mean ± SD)</p>
-                    </div>
-                    <button onclick="handleDownload('inversion.csv')" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition">
-                        Download Excel
-                    </button>
-                </div>
-                <div class="grid md:grid-cols-5 gap-4 mb-6">
-                    <div>
-                        <label class="block text-xs font-bold text-gray-400 uppercase mb-1">Substance</label>
-                        <select id="inv-substance" class="w-full border p-2 rounded text-sm">
-                            <option>HCFC-22</option><option>HCFC-141b</option><option>HCFC-142b</option><option>CFC-11</option><option>CFC-12</option>
-                            <option>HFC-134a</option><option>HFC-143a</option><option>HFC-32</option><option>HFC-125</option><option>HFC-152a</option>
-                        </select>
-                    </div>
-                    <div><label class="block text-xs font-bold text-gray-400 uppercase mb-1">Start Year</label><select id="inv-start-year" class="w-full border p-2 rounded text-sm"></select></div>
-                    <div><label class="block text-xs font-bold text-gray-400 uppercase mb-1">End Year</label><select id="inv-end-year" class="w-full border p-2 rounded text-sm"></select></div>
-                    <div>
-                        <label class="block text-xs font-bold text-gray-400 uppercase mb-1">Region</label>
-                        <select id="inv-country" class="w-full border p-2 rounded text-sm">
-                            <option>China</option><option>USA</option><option>EU-27</option><option>India</option><option>Japan</option><option>Global</option>
-                        </select>
-                    </div>
-                    <div class="flex items-end">
-                        <button onclick="renderInversionChart()" class="w-full bg-green-700 text-white font-bold py-2 rounded hover:bg-green-800 transition uppercase text-xs h-[38px]">
-                            Update Chart
-                        </button>
-                    </div>
-                </div>
-                <div id="inversion-chart" class="w-full h-[520px]"></div>
+        <div class="grid grid-cols-1 md:grid-cols-6 gap-4 mb-8">
+            <div>
+                <label class="block text-xs font-bold text-gray-400 uppercase mb-1">Substance</label>
+                <select id="substance-select" onchange="handleMainFilterChange()" class="w-full border rounded-lg p-2 text-sm focus:ring-2 focus:ring-blue-500">
+                    <option value="" disabled selected>-- 选择物质 --</option><option>CFC-11</option><option>CFC-12</option><option>HCFC-22</option>
+                    <option>HCFC-141b</option><option>HCFC-142b</option><option>HFC-134a</option><option>HFC-143a</option><option>HFC-125</option><option>HFC-32</option>
+                </select>
             </div>
-             <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 mb-8">
-                <h3 class="text-2xl font-bold text-gray-900 mb-4 border-l-4 border-green-600 pl-4">Methodology: Top-down Inversion</h3>
-                <p class="text-gray-600 leading-relaxed italic">
-                    The top-down inversion method is an independent assessment method based on atmospheric observations. It involves directly measuring the concentrations of target gases in the atmosphere via ground-based stations and satellites.
-                </p>
+            <div>
+                <label class="block text-xs font-bold text-gray-400 uppercase mb-1">Region</label>
+                <select id="region-select" onchange="handleMainFilterChange()" class="w-full border rounded-lg p-2 text-sm">
+                    <option value="" disabled selected>-- 选择国家/地区 --</option><option>China</option><option>USA</option><option>Europe</option><option>Japan</option><option>South Korea</option><option>India</option><option>Global</option>
+                </select>
             </div>
-        </section>
+            <div>
+                <label class="block text-xs font-bold text-gray-400 uppercase mb-1">Start Year</label>
+                <select id="start-year" class="w-full border rounded-lg p-2 text-sm"><option>1980</option></select>
+            </div>
+            <div>
+                <label class="block text-xs font-bold text-gray-400 uppercase mb-1">End Year</label>
+                 <select id="end-year" class="w-full border rounded-lg p-2 text-sm"><option>2024</option></select>
+            </div>
+            <div id="reference-wrapper">
+                <label class="block text-xs font-bold text-gray-400 uppercase mb-1">Source (for Sector)</label>
+                <select id="reference-select" class="w-full border rounded-lg p-2 text-sm"></select>
+            </div>
+            <div class="flex items-end space-x-2">
+    <button id="btn-line" onclick="setActiveButton('btn-line'); updateInventoryChart('line')" 
+            class="chart-btn flex-1 bg-gray-200 text-gray-800 text-xs font-bold py-2.5 rounded hover:bg-gray-300 transition uppercase">
+        Total (Line)
+    </button>
+    <button id="btn-bar" onclick="setActiveButton('btn-bar'); updateInventoryChart('bar')" 
+            class="chart-btn flex-1 bg-gray-200 text-gray-800 text-xs font-bold py-2.5 rounded hover:bg-gray-300 transition uppercase">
+        Sector (Bar)
+    </button>
+</div>
+        </div>
+
+        <div id="inventory-chart" class="w-full h-[500px]" style="width: 100%; height: 500px;"></div>
+    </div>
+
+    <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 mb-8">
+        <h3 class="text-2xl font-bold text-gray-900 mb-4 border-l-4 border-blue-600 pl-4">Methodology</h3>
+        <p class="text-gray-600 leading-relaxed italic">
+            The bottom-up inventory approach estimates emissions based on activity data (production and consumption) and emission factors, in accordance with the emission mechanisms specific to each sector. For detailed methodologies, please refer to the publications listed below.
+        </p>
+    </div>
+
+    <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+        <h3 class="text-xl font-bold text-gray-900 mb-6">Publications</h3>
+        <div class="overflow-x-auto">
+            <table class="w-full text-left text-sm border-collapse">
+                <thead>
+                    <tr class="bg-gray-50 border-b">
+                        <th class="p-4 font-bold">Study</th>
+                        <th class="p-4 font-bold">Substance</th>
+                        <th class="p-4 font-bold">Region</th>
+                        <th class="p-4 font-bold">Year</th>
+                        <th class="p-4 font-bold">Reference</th>
+                    </tr>
+                </thead>
+                <tbody id="publication-table-body" class="divide-y">
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<section id="inversion" class="page container mx-auto px-4 py-12">
+    <div class="bg-white p-6 rounded-xl shadow mb-10">
+        
+        <div class="flex justify-between mb-4 border-b pb-3">
+            <div>
+                <h2 class="text-2xl font-bold text-green-900">Inversion Emission</h2>
+                <p class="text-sm text-gray-500">Top-down estimations with uncertainty ranges (Mean ± SD)</p>
+            </div>
+            <button onclick="handleDownload('inversion.csv')" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition">
+                Download Excel
+            </button>
+        </div>
+
+        <div class="grid md:grid-cols-5 gap-4 mb-6">
+            <div>
+                <label class="block text-xs font-bold text-gray-400 uppercase mb-1">Substance</label>
+                <select id="inv-substance" class="w-full border p-2 rounded text-sm">
+                    <option>CFC-11</option><option>CFC-12</option>
+                    <option>HCFC-22</option><option>HCFC-141b</option><option>HCFC-142b</option>
+                    <option>HFC-134a</option><option>HFC-143a</option><option>HFC-32</option>
+                    <option>HFC-125</option><option>HFC-152a</option>
+                </select>
+            </div>
+
+            <div>
+                <label class="block text-xs font-bold text-gray-400 uppercase mb-1">Region</label>
+                <select id="inv-country" class="w-full border p-2 rounded text-sm">
+                    <option>China</option><option>USA</option><option>Europe</option>
+                    <option>India</option><option>Japan</option><option>Global</option>
+                </select>
+            </div>
+
+            <div>
+                <label class="block text-xs font-bold text-gray-400 uppercase mb-1">Start Year</label>
+                <select id="inv-start-year" class="w-full border p-2 rounded text-sm">
+                    </select>
+            </div>
+
+            <div>
+                <label class="block text-xs font-bold text-gray-400 uppercase mb-1">End Year</label>
+                <select id="inv-end-year" class="w-full border p-2 rounded text-sm"></select>
+            </div>
+
+            <div class="flex items-end">
+                <button onclick="renderInversionChart()" class="w-full bg-green-700 text-white font-bold py-2 rounded hover:bg-green-800 transition uppercase text-xs h-[38px]">
+                    Update Chart
+                </button>
+            </div>
+        </div>
+
+        <div id="inversion-chart" class="w-full h-[520px]"></div>
+    </div>
+
+    <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 mb-8">
+        <h3 class="text-2xl font-bold text-gray-900 mb-4 border-l-4 border-green-600 pl-4">Methodology: Top-down Inversion</h3>
+        <p class="text-gray-600 leading-relaxed italic">
+            The top-down inversion method is an independent assessment method based on atmospheric observations. It involves directly measuring the concentrations of target gases in the atmosphere via ground-based stations and satellites.
+        </p>
+    </div>
+
+<div class="bg-gray-50 p-6 rounded-xl border border-gray-200 mt-8">
+    <h3 class="text-lg font-bold text-gray-800 mb-4 flex items-center">
+        <svg class="w-5 h-5 mr-2 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+        </svg>
+        Data References for Current Selection
+    </h3>
+    <div class="overflow-x-auto bg-white rounded-lg shadow-sm">
+        <table class="min-w-full divide-y divide-gray-200">
+            <thead class="bg-gray-100">
+                <tr>
+                    <th class="px-4 py-3 text-left text-xs font-bold text-gray-600 uppercase">Study</th>
+                    <th class="px-4 py-3 text-left text-xs font-bold text-gray-600 uppercase">Substance</th>
+                    <th class="px-4 py-3 text-left text-xs font-bold text-gray-600 uppercase">Region</th>
+                    <th class="px-4 py-3 text-left text-xs font-bold text-gray-600 uppercase">Year</th>
+                    <th class="px-4 py-3 text-left text-xs font-bold text-gray-600 uppercase">Full Citation</th>
+                </tr>
+            </thead>
+            <tbody id="inversion-ref-table" class="divide-y divide-gray-100 text-sm text-gray-700">
+                </tbody>
+        </table>
+    </div>
+    <div id="no-ref-msg" class="hidden text-center py-6 text-gray-400 italic">
+        No specific reference data found for this selection.
+    </div>
+</div>
+
+</section>
 
         <section id="comparison" class="page container mx-auto px-4 py-12">
             <div class="bg-white p-6 rounded-xl shadow mb-10">
@@ -295,46 +363,48 @@
             </div>
         </div>
 
-        <div class="mb-12">
-            <h2 class="text-2xl font-bold text-center text-gray-900 mb-8">Core Members</h2>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 text-center hover:shadow-md transition duration-300">
-                    <div class="w-24 h-24 bg-blue-100 rounded-full mx-auto mb-6 flex items-center justify-center text-blue-600 text-3xl font-bold">
-                        L
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-1">Xuekun Fang</h3>
-                    <p class="text-blue-600 font-medium mb-4">Team Leader</p>
-                    <div class="text-sm text-gray-500 space-y-2">
-                        <p><strong>Focus:</strong> GHG Accounting, Climate Policy</p>
-                        <p class="text-blue-500">fangxuekun@zju.edu.cn</p>
-                    </div>
-                </div>
-
-                <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 text-center hover:shadow-md transition duration-300">
-                    <div class="w-24 h-24 bg-green-100 rounded-full mx-auto mb-6 flex items-center justify-center text-green-600 text-3xl font-bold">
-                        W
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-1">Jianxin Hu</h3>
-                    <p class="text-green-600 font-medium mb-4">Team Leader</p>
-                    <div class="text-sm text-gray-500 space-y-2">
-                        <p><strong>Focus:</strong> Environmental Big Data, Modeling</p>
-                        <p class="text-blue-500">jianxin@pku.edu.cn</p>
-                    </div>
-                </div>
-
-                <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 text-center hover:shadow-md transition duration-300">
-                    <div class="w-24 h-24 bg-indigo-100 rounded-full mx-auto mb-6 flex items-center justify-center text-indigo-600 text-3xl font-bold">
-                        Z
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-1">Jing Wu</h3>
-                    <p class="text-indigo-600 font-medium mb-4">Team Leader</p>
-                    <div class="text-sm text-gray-500 space-y-2">
-                        <p><strong>Focus:</strong> Atmospheric Chemistry, Emissions</p>
-                        <p class="text-blue-500">wujing.108@bjtu.edu.cn</p>
-                    </div>
-                </div>
+<div class="mb-12">
+    <h2 class="text-2xl font-bold text-center text-gray-900 mb-8">Core Members</h2>
+    <div class="grid md:grid-cols-3 gap-8">
+        
+        <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 text-center hover:shadow-md transition duration-300">
+            <div class="w-32 h-32 mx-auto mb-6 relative">
+                <img src="images/fang.jpg" alt="Xuekun Fang" 
+                     class="w-full h-full rounded-full object-cover border-4 border-blue-50 shadow-sm">
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-1">Xuekun Fang</h3>
+            <p class="text-blue-600 font-medium mb-2">Zhejiang University</p>
+            <div class="text-sm text-gray-500 space-y-1">
+                <p class="text-blue-500 break-all font-mono">fangxuekun@zju.edu.cn</p>
             </div>
         </div>
+
+        <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 text-center hover:shadow-md transition duration-300">
+            <div class="w-32 h-32 mx-auto mb-6 relative">
+                <img src="images/hu.jpg" alt="Jianxin Hu" 
+                     class="w-full h-full rounded-full object-cover border-4 border-green-50 shadow-sm">
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-1">Jianxin Hu</h3>
+            <p class="text-green-600 font-medium mb-2">Peking University</p>
+            <div class="text-sm text-gray-500 space-y-1">
+                <p class="text-blue-500 break-all font-mono">jianxin@pku.edu.cn</p>
+            </div>
+        </div>
+
+        <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 text-center hover:shadow-md transition duration-300">
+            <div class="w-32 h-32 mx-auto mb-6 relative">
+                <img src="images/wu.jpg" alt="Jing Wu" 
+                     class="w-full h-full rounded-full object-cover border-4 border-indigo-50 shadow-sm">
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-1">Jing Wu</h3>
+            <p class="text-indigo-600 font-medium mb-2">Beijing Jiaotong University</p>
+            <div class="text-sm text-gray-500 space-y-1">
+                <p class="text-blue-500 break-all font-mono">wujing.108@bjtu.edu.cn</p>
+            </div>
+        </div>
+
+    </div>
+</div>
 
         <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
             <h2 class="text-2xl font-bold text-gray-900 mb-6 border-l-4 border-indigo-600 pl-4">Partner Institutions</h2>
@@ -516,111 +586,204 @@
     }
 
     // 5. Chart Logic - Inventory
-function updateInventoryChart(type) {
-    currentInvChartType = type;
+// 1. 窗口大小自适应
+window.addEventListener('resize', function() {
+    const chartDom = document.getElementById('inventory-chart');
+    const chart = echarts.getInstanceByDom(chartDom);
+    if (chart) chart.resize();
+});
+
+function setActiveButton(activeId) {
+    // 1. 找到所有的图表按钮
+    const buttons = document.querySelectorAll('.chart-btn');
     
+    buttons.forEach(btn => {
+        if (btn.id === activeId) {
+            // 2. 激活态：深蓝色背景，白色文字
+            btn.classList.remove('bg-gray-200', 'text-gray-800', 'hover:bg-gray-300');
+            btn.classList.add('bg-blue-900', 'text-white', 'hover:bg-black');
+        } else {
+            // 3. 非激活态：灰色背景，深灰色文字
+            btn.classList.remove('bg-blue-900', 'text-white', 'hover:bg-black');
+            btn.classList.add('bg-gray-200', 'text-gray-800', 'hover:bg-gray-300');
+        }
+    });
+}
+
+
+// 2. 主过滤器逻辑
+function handleMainFilterChange() {
     const substance = document.getElementById('substance-select').value;
-    const region    = document.getElementById('region-select').value;
-    const sYear     = parseInt(document.getElementById('start-year').value);
-    const eYear     = parseInt(document.getElementById('end-year').value);
+    const region = document.getElementById('region-select').value;
+    
+// 重置所有按钮颜色为灰色 (初始态)
+    const buttons = document.querySelectorAll('.chart-btn');
+    buttons.forEach(btn => {
+        btn.classList.remove('bg-blue-900', 'text-white', 'hover:bg-black');
+        btn.classList.add('bg-gray-200', 'text-gray-800', 'hover:bg-gray-300');
+    });
+
+
+    // 如果还没选好，清空下拉框和表格，不画图
+    if (!substance || !region) {
+        syncReferenceDropdown("", ""); 
+        updatePublicationTable("", "");
+        // 可选：清空图表
+        const chartDom = document.getElementById('inventory-chart');
+        let chart = echarts.getInstanceByDom(chartDom);
+        if (chart) chart.clear(); 
+        return;
+    }
+
+    syncReferenceDropdown(substance, region);
+    updatePublicationTable(substance, region);
+    
+    // 选好后自动画图（默认折线图）
+    updateInventoryChart('line');
+}
+
+// 3. 同步研究来源下拉框
+function syncReferenceDropdown(substance, region) {
+    const refSelect = document.getElementById('reference-select');
+    
+    // 过滤出当前物质和地区下的所有研究来源
+    const sources = [...new Set(inventoryData
+        .filter(d => d.substance === substance && d.region === region)
+        .map(d => d.ref_short))];
+
+    // 填充下拉框
+    if (sources.length > 0) {
+        refSelect.innerHTML = sources.map(s => `<option value="${s}">${s}</option>`).join('');
+    } else {
+        refSelect.innerHTML = '<option value="">No Sources</option>';
+    }
+}
+
+// 4. 更新表格逻辑
+function updatePublicationTable(substance, region) {
+    const tableBody = document.getElementById('publication-table-body');
+    const filteredData = inventoryData.filter(d => d.substance === substance && d.region === region);
+    const uniqueShorts = [...new Set(filteredData.map(d => d.ref_short))];
+
+    if (uniqueShorts.length === 0) {
+        tableBody.innerHTML = `<tr><td colspan="5" class="p-4 text-center text-gray-400">No references available.</td></tr>`;
+        return;
+    }
+
+    tableBody.innerHTML = uniqueShorts.map(short => {
+        const studyData = filteredData.filter(d => d.ref_short === short);
+        const years = studyData.map(d => d.year);
+        const yearRange = `${Math.min(...years)} - ${Math.max(...years)}`;
+        const fullRef = studyData[0].ref_full || 'N/A';
+
+        return `
+            <tr class="hover:bg-gray-50 transition">
+                <td class="p-4 font-bold text-blue-900">${short}</td>
+                <td class="p-4">${substance}</td>
+                <td class="p-4">${region}</td>
+                <td class="p-4 text-gray-500">${yearRange}</td>
+                <td class="p-4 italic text-gray-600">${fullRef}</td>
+            </tr>
+        `;
+    }).join('');
+}
+
+// 5. 核心图表逻辑
+function updateInventoryChart(type) {
+    const substance = document.getElementById('substance-select').value;
+    const region = document.getElementById('region-select').value;
+    const sYear = parseInt(document.getElementById('start-year').value);
+    const eYear = parseInt(document.getElementById('end-year').value);
+    const selectedRefShort = document.getElementById('reference-select').value;
 
     const chartDom = document.getElementById('inventory-chart');
-    if (!chartDom) return;
+    let chart = echarts.getInstanceByDom(chartDom) || echarts.init(chartDom);
+    chart.resize(); // 强制调整大小
+    chart.clear();
 
-    let chart = echarts.getInstanceByDom(chartDom);
-    if (chart) { chart.dispose(); }
-    chart = echarts.init(chartDom);
-
-    if (sYear > eYear) {
-        alert("Start year cannot be greater than end year");
-        return;
-    }
-
-    const yearRange = [];
-    for (let y = sYear; y <= eYear; y++) {
-        yearRange.push(y);
-    }
-
-    let filtered = inventoryData.filter(d =>
-        d.substance === substance && 
-        d.region === region && 
-        d.year >= sYear && 
-        d.year <= eYear
+    const yearRange = Array.from({length: eYear - sYear + 1}, (_, i) => sYear + i);
+    let baseFiltered = inventoryData.filter(d => 
+        d.substance === substance && d.region === region && d.year >= sYear && d.year <= eYear
     );
 
-    const hasData = filtered.length > 0 && filtered.some(d => parseFloat(d.value) > 0);
-
-    if (!hasData) {
-        chart.setOption({
-            title: { text: `${substance} Inventory Emissions (${region})`, left: "center" },
-            graphic: {
-                type: 'text',
-                left: 'center',
-                top: 'middle',
-                style: { text: 'No Data Available', fill: '#999', font: 'bold 18px sans-serif' }
-            },
-            xAxis: { show: false },
-            yAxis: { show: false },
-            series: []
-        });
-        return;
-    }
-
     let option = {
-        title: { 
-            text: type === "line" ? `${substance} Inventory Emissions (${region})` : `${substance} Sectoral Breakdown (${region})`,
-            left: "center" 
-        },
-        tooltip: { trigger: "axis" },
-        grid: { bottom: '15%', left: '10%', right: '10%', containLabel: true },
-        xAxis: { 
-            type: "category", 
-            data: yearRange,
-            axisLabel: {
-                interval: 0,
-                rotate: yearRange.length > 10 ? 45 : 0 
-            },
-            axisTick: { alignWithLabel: true }
-        },
-        yAxis: { type: "value", name: "Gg yr⁻¹" }
+        title: { left: "center", top: 0, textStyle: { fontSize: 16 } },
+        tooltip: { trigger: "axis", confine: true },
+        legend: { bottom: 0, padding: [5, 10] },
+        xAxis: { type: "category", data: yearRange },
+        yAxis: { type: "value", name: "Gg yr⁻¹" },
+        grid: { top: '60px', bottom: '60px', left: '50px', right: '20px', containLabel: true }
     };
 
     if (type === "line") {
-        const totalData = yearRange.map(y => {
-            const row = filtered.find(d => d.year === y && (d.sector.toLowerCase() === "total"));
-            // 修改点：如果没有找到数据或数值无效，返回 null 而不是 0
-            return (row && row.value !== undefined && row.value !== null) ? row.value : null;
-        });
-
-        option.series = [{
-            name: "Total",
-            type: "line",
+        const sources = [...new Set(baseFiltered.map(d => d.ref_short))];
+        option.title.text = `${substance} Emission Trends: ${region}`;
+        option.series = sources.map(short => ({
+            name: short,
+            type: 'line',
             smooth: true,
-            connectNulls: false, // 设置为 false，则 null 处线段会断开；设置为 true 则会跳过 null 连线
-            data: totalData,
-            areaStyle: { opacity: 0.3 },
             symbol: 'circle',
-            symbolSize: 8
-        }];
+            symbolSize: 6,
+            data: yearRange.map(y => {
+                const row = baseFiltered.find(d => d.year === y && d.ref_short === short && d.sector.toLowerCase() === "total");
+                return row ? row.value : null;
+            })
+        }));
     } else {
-        const sectors = [...new Set(filtered.map(d => d.sector).filter(s => s.toLowerCase() !== "total"))];
-        option.legend = { bottom: 0 };
-        option.tooltip.axisPointer = { type: "shadow" };
+        // Bar Chart Logic
+        if (!selectedRefShort) {
+            // 如果没有选中的来源，给一个提示或不做处理
+             chart.setOption({
+                title: { text: "Please select a substance with valid sources", left: "center" }
+            });
+            return;
+        }
         
+        const refData = baseFiltered.filter(d => d.ref_short === selectedRefShort && d.sector.toLowerCase() !== "total");
+        const sectors = [...new Set(refData.map(d => d.sector))];
+        
+        option.title.text = `${substance} Sectors (${selectedRefShort}) - ${region}`;
         option.series = sectors.map(sec => ({
             name: sec,
             type: "bar",
             stack: "total",
             data: yearRange.map(y => {
-                const row = filtered.find(d => d.year === y && d.sector === sec);
-                // 修改点：返回 null
-                return (row && row.value !== undefined && row.value !== null) ? row.value : null;
+                const row = refData.find(d => d.year === y && d.sector === sec);
+                return row ? row.value : null;
             })
         }));
     }
-
     chart.setOption(option);
 }
+
+// ==========================================
+// 修复部分：页面初始化逻辑 (Fix)
+// ==========================================
+document.addEventListener('DOMContentLoaded', function() {
+    // 1. 初始化年份下拉框 (保持不变)
+    const startYearSelect = document.getElementById('start-year');
+    const endYearSelect = document.getElementById('end-year');
+    
+    let yearOptions = '';
+    for(let y = 1980; y <= 2024; y++) {
+        yearOptions += `<option value="${y}">${y}</option>`;
+    }
+    startYearSelect.innerHTML = yearOptions;
+    endYearSelect.innerHTML = yearOptions;
+    
+    startYearSelect.value = "1980";
+    endYearSelect.value = "2024";
+
+    // 2. 将物质和地区重置为初始状态 (即选中那个 "请选择" 选项)
+    document.getElementById('substance-select').selectedIndex = 0;
+    document.getElementById('region-select').selectedIndex = 0;
+    
+    // 3. 初始化下拉框和表格（此时由于没选物质，会显示 "No Sources"）
+    handleMainFilterChange();
+
+    // 4. 注意：这里不再调用 updateInventoryChart('line')
+    // 只有当用户选择了具体数值后，通过 handleMainFilterChange 触发更新
+});
 
     // 6. Chart Logic - Inversion
 function renderInversionChart() {
@@ -660,6 +823,9 @@ function renderInversionChart() {
         d.year >= sYear &&
         d.year <= eYear
     );
+
+// ============= 新增：更新参考文献表格 =============
+    updateReferenceTable(filtered);
 
     // 4. 检查是否有数据（无数据时显示提示）
     if (filtered.length === 0) {
@@ -822,6 +988,55 @@ function renderInversionChart() {
     });
 }
 
+function updateReferenceTable(data) {
+    const tableBody = document.getElementById("inversion-ref-table");
+    const noDataMsg = document.getElementById("no-ref-msg");
+    
+    if (!tableBody) return;
+
+    // 清空现有内容
+    tableBody.innerHTML = "";
+
+    if (data.length === 0) {
+        noDataMsg.classList.remove("hidden");
+        return;
+    }
+    noDataMsg.classList.add("hidden");
+
+    // 为了避免表格过长，我们可以按 研究+年份 进行去重显示，或者显示所有涉及的条目
+    // 这里采用：显示当前筛选范围内所有出现的独特研究及其引用
+    const uniqueRefs = [];
+    const seen = new Set();
+
+    data.forEach(item => {
+        // 创建一个唯一标识：研究+年份+物质+区域
+        const key = `${item.study}-${item.year}-${item.substance}-${item.region}`;
+        if (!seen.has(key)) {
+            uniqueRefs.push(item);
+            seen.add(key);
+        }
+    });
+
+    // 排序：按年份降序，然后按研究缩写升序
+    uniqueRefs.sort((a, b) => b.year - a.year || a.study.localeCompare(b.study));
+
+    uniqueRefs.forEach(ref => {
+        const tr = document.createElement("tr");
+        tr.className = "hover:bg-blue-50 transition-colors";
+        
+        // 容错处理：如果 CSV 里没有 citation 列，显示为 "N/A"
+        const citation = ref.citation || ref.Citation || "Reference not provided in CSV";
+
+        tr.innerHTML = `
+            <td class="px-4 py-3 font-semibold text-blue-900">${ref.study}</td>
+            <td class="px-4 py-3">${ref.substance}</td>
+            <td class="px-4 py-3">${ref.region}</td>
+            <td class="px-4 py-3 text-gray-500">${ref.year}</td>
+            <td class="px-4 py-3 italic text-gray-600">${citation}</td>
+        `;
+        tableBody.appendChild(tr);
+    });
+}
 
 // 7. Chart Logic - Comparison
 function renderComparisonChart() {
