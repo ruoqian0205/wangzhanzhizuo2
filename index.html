@@ -671,7 +671,7 @@ function updatePublicationTable(substance, region) {
     tableBody.innerHTML = uniqueShorts.map(short => {
         const studyData = filteredData.filter(d => d.ref_short === short);
         const years = studyData.map(d => d.year);
-        const yearRange = `${Math.min(...years)} - ${Math.max(...years)}`;
+        const yearRange = `${Math.min(...years)}–${Math.max(...years)}`;
         const fullRef = studyData[0].ref_full || 'N/A';
 
         return `
