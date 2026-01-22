@@ -438,6 +438,8 @@
                 <div id="register-fields" class="space-y-2 hidden">
                     <input id="reg-name" class="w-full border p-2 rounded" placeholder="Full Name">
                     <input id="reg-country" class="w-full border p-2 rounded" placeholder="Country">
+                    <input id="reg-org" class="w-full border p-2 rounded" placeholder="Organization">
+                    <input id="reg-dep" class="w-full border p-2 rounded" placeholder="Department">
                 </div>
                 <input id="auth-email" class="w-full border p-2 rounded mt-2" placeholder="Email">
                 <div class="flex justify-between mt-4">
@@ -1049,38 +1051,35 @@ function updateReferenceTable(data) {
     });
 }
 
-// 7. Chart Logic - Comparison
+// 7. Chart Logic - Comparison (支持非对称误差棒)
 function renderComparisonChart() {
     const chartDom = document.getElementById("comparison-chart");
     if (!chartDom) return;
 
-    // 1. 获取当前筛选值
+    // 1. 获取筛选器值
     const substance = document.getElementById("comp-substance").value;
     const region = document.getElementById("comp-region").value;
     const sYear = parseInt(document.getElementById("comp-start-year").value);
     const eYear = parseInt(document.getElementById("comp-end-year").value);
     const methodFilter = document.getElementById("comp-method-filter").value;
 
-    // 校验年份逻辑
     if (sYear > eYear) {
         alert("Start year cannot be greater than end year");
         return;
     }
 
-    // 2. 构造完整的横坐标年份数组
+    // 2. 构造年份范围
     const yearRange = [];
     for (let y = sYear; y <= eYear; y++) {
         yearRange.push(y);
     }
 
-    // 3. 初始化/获取图表实例
+    // 3. 初始化图表
     let chart = echarts.getInstanceByDom(chartDom);
-    if (chart) {
-        chart.dispose();
-    }
+    if (chart) { chart.dispose(); }
     chart = echarts.init(chartDom);
 
-    // 4. 过滤基础数据
+    // 4. 数据过滤
     let filtered = comparisonData.filter(d =>
         d.substance === substance &&
         d.region === region &&
@@ -1088,7 +1087,6 @@ function renderComparisonChart() {
         d.year <= eYear
     );
 
-    // 方法学筛选
     if (methodFilter !== 'All') {
         filtered = filtered.filter(d => {
             const m = (d.method || "").toLowerCase();
@@ -1098,54 +1096,53 @@ function renderComparisonChart() {
         });
     }
 
-    // 检查是否有数据
     if (filtered.length === 0) {
         chart.setOption({
-            title: { text: `${substance} Emission Comparison (${region})`, left: "center" },
+            title: { text: `${substance} Emission (${region})`, left: "center" },
             graphic: {
                 type: 'text', left: 'center', top: 'middle',
                 style: { text: 'No Data Available', fill: '#999', font: 'bold 18px sans-serif' }
-            },
-            xAxis: { show: false }, yAxis: { show: false }, series: []
+            }
         });
         return;
     }
 
+    // 5. 构造 Series
     const datasets = [...new Set(filtered.map(d => d.dataset))];
     let series = [];
     let tableHTML = "";
     let allValuesForScale = [0];
 
-    // 5. 构造 Series 数据
     datasets.forEach(name => {
         const rows = filtered.filter(d => d.dataset === name);
         const lineData = [];
         const errorData = [];
         const method = rows[0]?.method || "Unknown";
 
-        // 遍历完整的 yearRange
         yearRange.forEach((y, idx) => {
             const r = rows.find(d => d.year === y);
             if (!r) {
-                lineData.push(null); // 该年无数据，Tooltip 将不会显示此研究
+                lineData.push(null);
                 return;
             }
 
             const val = r.value ?? r.mean ?? r.Mean;
-            const sd = r.sd ?? r.SD ?? 0;
+            // 核心修改：读取正负误差值
+            const errPos = parseFloat(r.err_pos || r.ErrPos || 0);
+            const errNeg = parseFloat(r.err_neg || r.ErrNeg || 0);
 
             if (val !== undefined && val !== null) {
-                // 将 SD 存储在数据项中以便 Tooltip 调用
                 lineData.push({
                     value: val,
-                    sdValue: sd
+                    errPos: errPos,
+                    errNeg: errNeg
                 });
                 allValuesForScale.push(val);
 
-                // 记录误差棒数据
-                if (sd > 0) {
-                    const upper = val + sd;
-                    const lower = val - sd;
+                // 构造非对称误差坐标：[x索引, 下限, 上限]
+                if (errPos > 0 || errNeg > 0) {
+                    const upper = val + errPos;
+                    const lower = val - errNeg;
                     errorData.push([idx, lower, upper]);
                     allValuesForScale.push(upper, lower);
                 }
@@ -1159,14 +1156,13 @@ function renderComparisonChart() {
             name: name,
             type: "line",
             data: lineData,
-            smooth: false,
-            connectNulls: false, // 核心需求：缺失处不连线
+            connectNulls: false,
             symbol: method.toLowerCase().includes("bottom-up") ? "circle" : "emptyTriangle",
             symbolSize: 8,
             z: 20
         });
 
-        // 添加误差棒 (Custom Series)
+        // 添加非对称误差棒
         if (errorData.length > 0) {
             series.push({
                 type: "custom",
@@ -1182,22 +1178,22 @@ function renderComparisonChart() {
                     return {
                         type: 'group',
                         children: [
-                            { type: 'line', shape: { x1: high[0], y1: high[1], x2: low[0], y2: low[1] }, style },
-                            { type: 'line', shape: { x1: high[0] - half, y1: high[1], x2: high[0] + half, y2: high[1] }, style },
-                            { type: 'line', shape: { x1: low[0] - half, y1: low[1], x2: low[0] + half, y2: low[1] }, style }
+                            { type: 'line', shape: { x1: high[0], y1: high[1], x2: low[0], y2: low[1] }, style }, // 垂直主线
+                            { type: 'line', shape: { x1: high[0] - half, y1: high[1], x2: high[0] + half, y2: high[1] }, style }, // 顶部横线
+                            { type: 'line', shape: { x1: low[0] - half, y1: low[1], x2: low[0] + half, y2: low[1] }, style }    // 底部横线
                         ]
                     };
                 },
                 data: errorData,
                 z: 10,
-                tooltip: { show: false } // 隐藏误差棒自身的 tooltip，统一由 axis tooltip 处理
+                tooltip: { show: false }
             });
         }
 
         tableHTML += `<tr><td class="px-6 py-4">${name}</td><td class="px-6 py-4">${method}</td><td class="px-6 py-4">${sYear}-${eYear}</td></tr>`;
     });
 
-    // 动态 Y 轴计算
+    // 6. 坐标轴范围计算
     const rawMax = Math.max(...allValuesForScale);
     const splitNumber = 5;
     let interval = Math.ceil((rawMax || 100) / splitNumber / 5) * 5;
@@ -1207,53 +1203,39 @@ function renderComparisonChart() {
     const tableBody = document.getElementById("comp-table-body");
     if (tableBody) tableBody.innerHTML = tableHTML;
 
-    // 6. 配置图表
+    // 7. 设置配置项
     chart.setOption({
-        title: { 
-            text: `${substance} Emission Comparison (${region})`, 
-            left: "center",
-            top: 10
-        },
-        tooltip: { 
+        title: { text: `${substance} Emission Comparison (${region})`, left: "center", top: 10 },
+        tooltip: {
             trigger: "axis",
-            // 核心修改：自定义 Tooltip 内容
             formatter: function(params) {
                 let res = `<b>Year: ${params[0].name}</b><br/>`;
-                let hasValidData = false;
-
+                let hasValid = false;
                 params.forEach(p => {
-                    // 只处理 line 类型的系列，且排除值为 null 的点
-                    if (p.seriesType === 'line' && p.value !== null && p.value !== undefined) {
-                        // 因为 data 改为了对象，所以取值方式为 p.value.value 或 p.data.value
-                        const val = p.data.value !== undefined ? p.data.value : p.value;
-                        const sd = p.data.sdValue !== undefined ? p.data.sdValue : "N/A";
-                        
-                        res += `${p.marker} ${p.seriesName}: <b>${val}</b> (±${sd})<br/>`;
-                        hasValidData = true;
+                    if (p.seriesType === 'line' && p.data && p.data.value !== null) {
+                        const d = p.data;
+                        // 优化 Tooltip 显示：4 (+1.5/-2.0)
+                        const errInfo = (d.errPos || d.errNeg) 
+                            ? `<span style="font-size:0.9em; color:#666;"> (+${d.errPos}/-${d.errNeg})</span>` 
+                            : "";
+                        res += `${p.marker} ${p.seriesName}: <b>${d.value}</b>${errInfo}<br/>`;
+                        hasValid = true;
                     }
                 });
-                
-                return hasValidData ? res : null;
+                return hasValid ? res : null;
             }
         },
         legend: { bottom: 5, data: datasets },
         grid: { left: '5%', right: '5%', bottom: '15%', containLabel: true },
-        xAxis: { 
-            type: "category", 
+        xAxis: {
+            type: "category",
             data: yearRange,
-            boundaryGap: true,
-            axisTick: { alignWithLabel: true },
-            axisLabel: {
-                interval: 0,
-                rotate: yearRange.length > 10 ? 45 : 0
-            }
+            axisLabel: { interval: 0, rotate: yearRange.length > 10 ? 45 : 0 }
         },
-        yAxis: { 
-            type: "value", 
+        yAxis: {
+            type: "value",
             name: "Gg yr⁻¹",
-            min: 0,
-            max: yMax,
-            interval: interval,
+            min: 0, max: yMax, interval: interval,
             splitLine: { show: true, lineStyle: { type: 'dashed' } }
         },
         series: series
