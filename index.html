@@ -291,8 +291,8 @@
     <div>
         <label class="block text-xs font-bold text-gray-400 uppercase mb-1">Region</label>
         <select id="comp-region" class="w-full border p-2 rounded text-sm h-[38px] bg-white">
-            <option value="" disabled selected>-- Select Region --</option><option>China</option><option>USA</option><option>Europe</option>
-            <option>India</option><option>Japan</option><option>Global</option>
+            <option value="" disabled selected>-- Select Region --</option><option>China</option><option>USA</option><option>Europe</option><option>Western Europe</option><option>Central Europe</option>
+            <option>South Korea</option><option>Japan</option><option>Western Japan</option><option>Australia</option><option>Global</option>
         </select>
     </div>
 
@@ -1300,12 +1300,12 @@ function updateComparisonReferenceTable(data) {
         tr.className = "hover:bg-gray-50 transition-colors border-b border-gray-100";
         
         tr.innerHTML = `
-            <td class="px-4 py-3 font-semibold text-blue-900">${row.name}</td>
-            <td class="px-4 py-3 text-gray-700">${row.substance}</td>
-            <td class="px-4 py-3 text-gray-700">${row.region}</td>
-            <td class="px-4 py-3 text-gray-500 font-medium">${row.yearRange}</td>
-            <td class="px-4 py-3 text-gray-700">${row.method}</td>
-            <td class="px-4 py-3 italic text-gray-600">${row.citation}</td>
+            <td class="px-6 py-4 font-semibold text-blue-900">${row.name}</td>
+            <td class="px-6 py-4 text-gray-700">${row.substance}</td>
+            <td class="px-6 py-4 text-gray-700">${row.region}</td>
+            <td class="px-6 py-4 text-gray-500 font-medium">${row.yearRange}</td>
+            <td class="px-6 py-4 text-gray-700">${row.method}</td>
+            <td class="px-6 py-4 italic text-gray-600 text-sm" style="max-width: 400px; overflow-wrap: break-word;">${row.citation}</td>
         `;
         tableBody.appendChild(tr);
     });
