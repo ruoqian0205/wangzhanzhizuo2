@@ -1266,12 +1266,11 @@ function updateComparisonReferenceTable(data) {
     const groups = {};
 
     data.forEach(item => {
-        const name = item.dataset || item.study || "Unknown Study";
-        const groupKey = `${name}|${item.substance}|${item.region}`;
+        const groupKey = `${item.dataset}|${item.substance}|${item.region}`;
         
         if (!groups[groupKey]) {
             groups[groupKey] = {
-                name: name,
+                dataset: item.dataset,
                 substance: item.substance,
                 region: item.region,
                 years: [],
@@ -1292,7 +1291,7 @@ function updateComparisonReferenceTable(data) {
         };
     });
 
-    summaryData.sort((a, b) => a.name.localeCompare(b.name));
+    summaryData.sort((a, b) => a.dataset.localeCompare(b.dataset));
 
     // 4. 渲染表格行
     summaryData.forEach(row => {
@@ -1300,7 +1299,7 @@ function updateComparisonReferenceTable(data) {
         tr.className = "hover:bg-gray-50 transition-colors border-b border-gray-100";
         
         tr.innerHTML = `
-            <td class="px-6 py-4 font-semibold text-blue-900">${row.name}</td>
+            <td class="px-6 py-4 font-semibold text-blue-900">${row.dataset}</td>
             <td class="px-6 py-4 text-gray-700">${row.substance}</td>
             <td class="px-6 py-4 text-gray-700">${row.region}</td>
             <td class="px-6 py-4 text-gray-500 font-medium">${row.yearRange}</td>
