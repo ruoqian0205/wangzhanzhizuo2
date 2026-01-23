@@ -1250,60 +1250,73 @@ updateComparisonReferenceTable(filtered);
 }
 
 function updateComparisonReferenceTable(data) {
-    const tableBody = document.getElementById("comp-table-body"); // 确保 HTML 中 ID 正确
+    const tableBody = document.getElementById("comp-table-body");
     if (!tableBody) return;
 
-    // 1. 清空现有内容
     tableBody.innerHTML = "";
 
     if (!data || data.length === 0) {
-        tableBody.innerHTML = `<tr><td colspan="5" class="p-4 text-center text-gray-400">No references available.</td></tr>`;
+        tableBody.innerHTML = `<tr><td colspan="5" class="p-4 text-center text-gray-400">No data available for the selected filters.</td></tr>`;
         return;
     }
 
-    // 2. 按照 数据集(dataset) + 物质(substance) + 区域(region) 进行分组
-    // 注意：对比页面通常使用 'dataset' 字段，反演页面使用 'study' 字段
     const groups = {};
 
     data.forEach(item => {
-        const groupKey = `${item.dataset}|${item.substance}|${item.region}`;
+        // --- 核心修正：自动适配多种可能的键名 ---
+        const name = item.dataset || item.study || item.Name || "Unknown";
+        const substance = item.substance || item.Substance || item.gas || "N/A";
+        const region = item.region || item.Region || "Global";
+        const citation = item.citation || item.Citation || item.reference || "Reference not provided";
+        const rawYear = item.year || item.Year;
+
+        // 生成唯一分组键
+        const groupKey = `${name}|${substance}|${region}`;
         
         if (!groups[groupKey]) {
             groups[groupKey] = {
-                dataset: item.dataset,
-                substance: item.substance,
-                region: item.region,
+                name: name,
+                substance: substance,
+                region: region,
                 years: [],
-                method: item.method || "N/A",
-                citation: item.citation || item.Citation || "Reference not provided"
+                citation: citation
             };
         }
-        groups[groupKey].years.push(parseInt(item.year));
+
+        // 确保年份是有效数字
+        if (rawYear) {
+            const parsedYear = parseInt(rawYear);
+            if (!isNaN(parsedYear)) {
+                groups[groupKey].years.push(parsedYear);
+            }
+        }
     });
 
-    // 3. 处理年份范围并排序
+    // 处理年份范围
     const summaryData = Object.values(groups).map(group => {
-        const minYear = Math.min(...group.years);
-        const maxYear = Math.max(...group.years);
-        return {
-            ...group,
-            yearRange: minYear === maxYear ? `${minYear}` : `${minYear}–${maxYear}`
-        };
+        let yearRange = "N/A";
+        if (group.years.length > 0) {
+            const minYear = Math.min(...group.years);
+            const maxYear = Math.max(...group.years);
+            yearRange = minYear === maxYear ? `${minYear}` : `${minYear}–${maxYear}`;
+        }
+        return { ...group, yearRange };
     });
 
-    summaryData.sort((a, b) => a.dataset.localeCompare(b.dataset));
+    // 按名称排序
+    summaryData.sort((a, b) => a.name.localeCompare(b.name));
 
-    // 4. 渲染表格行
+    // 渲染行
     summaryData.forEach(row => {
         const tr = document.createElement("tr");
         tr.className = "hover:bg-gray-50 transition-colors border-b border-gray-100";
         
         tr.innerHTML = `
-            <td class="px-6 py-4 font-semibold text-blue-900">${row.dataset}</td>
+            <td class="px-6 py-4 font-semibold text-blue-900">${row.name}</td>
             <td class="px-6 py-4 text-gray-700">${row.substance}</td>
             <td class="px-6 py-4 text-gray-700">${row.region}</td>
             <td class="px-6 py-4 text-gray-500 font-medium">${row.yearRange}</td>
-            <td class="px-6 py-4 italic text-gray-600 text-sm">${row.citation}</td>
+            <td class="px-6 py-4 italic text-gray-600 text-sm" style="max-width: 300px; overflow-wrap: break-word;">${row.citation}</td>
         `;
         tableBody.appendChild(tr);
     });
